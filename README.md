@@ -1,2 +1,3 @@
-# bashrc
-My bashrc...which will probably be z soon
+# pockybum522-conf-files
+
+
