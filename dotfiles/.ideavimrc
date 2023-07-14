@@ -1,15 +1,17 @@
-syntax on
-filetype indent plugin on
-
-" I did the thing
-noremap ; l
-noremap l k
-noremap k j
+" Make vim keys make more sense for modern computers
 noremap j h
+noremap k j
+noremap l k
+noremap ; l
 
+" Set up vim-sneak plugin and also smartcase (If you type a search in all lowercase
+" then it searches case-insensitively. If you use case at all, it matches case.)
 set sneak
 set ignorecase
 set smartcase
+
+" Since we remapped hjkl, move this over to the right one key also
+nmap ' <Plug>(sneak-;) 
 
 " For learning to use hjkl...BY FORCE.
 no <down> <Nop>
