@@ -10,7 +10,7 @@ set sneak
 set ignorecase
 set smartcase
 
-" Since we remapped hjkl, move this over to the right one key also
+" Since we remapped hjkl, move vim-sneak's 'search again' key over to the right one key also
 nmap ' <Plug>(sneak-;) 
 
 " For learning to use hjkl...BY FORCE.
@@ -25,5 +25,5 @@ ino <right> <Nop>
 ino <up> <Nop>
 
 " Make enter useful when not in insert, too
-nmap <S-Enter> i<CR><Esc>k
-nmap <CR> i<CR><Esc>
+"nmap <S-Enter> i<CR><Esc>k
+"nmap <CR> i<CR><Esc>
