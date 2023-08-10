@@ -13,7 +13,7 @@
 (defcfg
   ;; For Windows
   input  (low-level-hook)
-  output (send-event-sink)
+  output (send-event-sink 300 20)
 
   cmp-seq ralt
 
@@ -51,7 +51,7 @@
   tab   q     w     e     r     t     y     u     i     o     p     [     ]     ret       del   end   pgdn       kp7   kp8   kp9   kp+
   caps  a     s     d     f     g     h     j     k     l     ;     '     \                                      kp4   kp5   kp6 
   lsft  102d  z     x     c     v     b     n     m     ,     .     /     rsft                  up               kp1   kp2   kp3   kprt 
-  lctl lmet  lalt                    spc                      ralt  cmp   rctl            left  down  rght       kp0   kp.
+  lctl  lmet  lalt                    spc                     ralt  cmp   rctl            left  down  rght       kp0   kp.
 )
 
 ;; (deflayer alldisabled
@@ -69,7 +69,7 @@
   tab   q     w     e     r     t     y     u     i     o     p     [     ]     ret       del   end   pgdn       kp7   kp8   kp9   kp+
   @cesc a     s     d     f     g     h     j     k     l     @navi '     \                                      kp4   kp5   kp6 
   lsft  102d  z     x     c     v     b     n     m     ,     .     /     rsft                  up               kp1   kp2   kp3   kprt 
-  lctl lmet  lalt                     @arrs                   ralt  cmp   rctl            left  down  rght       kp0   kp.
+  lctl  lmet  lalt                    @arrs                   ralt  cmp   rctl            left  down  rght       kp0   kp.
 )
 
 (deflayer leadernavigation
@@ -109,7 +109,7 @@
         Remap F1 to escape for when I miss
         Leader navigation - When ; is held down as a leader: Make uio and jkl be the home, insert, pgup and del, end, pgdn block. 7, 8, 9 are now print (printscreen), scroll lock and pause
         Leader arrows - When space is held down asa leader: Make jkl; be left/down/up/right
-
+        
 |#
 
 
