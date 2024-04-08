@@ -9,6 +9,7 @@
 # TODO: Wallpaper shuffle
 # TODO: Flameshot install and config for printscreen starting region ss
 # TODO: Parcellite install and config for Alt + C to show history, history items = 300
+# TODO: k4dirstat install
 
 set -e
 set -o pipefail
