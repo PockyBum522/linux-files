@@ -37,6 +37,7 @@ apt-get -y install vim
 apt-get -y install git
 apt-get -y install htop
 apt-get -y install mint-meta-codecs
+apt-get -y install feh
 
 ################################################################
 echo "### Setting up dirs for where to put appimages ###"
