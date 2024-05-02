@@ -117,7 +117,8 @@ if [ ! -f "$BARRIER_CONFIG_DIR" ]; then
     mkdir -p "$BARRIER_CONFIG_DIR"
     curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/Barrier.conf > "$BARRIER_CONFIG_DIR/Barrier.conf"
 
-    cat >> "$USER_HOME/.config/autostart/barrier.desktop"<<EOF 
+    if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
+        cat >> "$USER_HOME/.config/autostart/barrier.desktop"<<EOF 
 [Desktop Entry]
 Type=Application
 Name=Barrier
@@ -135,7 +136,7 @@ Comment[en_US]=Keyboard and mouse sharing solution
 X-GNOME-Autostart-Delay=15
 
 EOF
-
+    fi
 fi
 
 
