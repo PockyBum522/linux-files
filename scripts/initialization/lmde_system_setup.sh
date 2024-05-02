@@ -112,6 +112,23 @@ run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybind
 run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'firefox'"
 run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Firefox'"
 
+
+echo "### Setting power settings ###" ##############################################################################
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.sleep-display-ac 1800
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.lid-close-ac-action 'suspend'
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.lid-close-battery-action 'suspend'
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.sleep-display-battery 1800
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.sleep-inactive-ac-timeout 0
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.sleep-inactive-battery-timeout 0
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.sleep-display-battery 300
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.sleep-inactive-battery-timeout 600
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.sleep-inactive-ac-timeout 21800
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.lid-close-ac-action 'nothing'
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.lid-close-battery-action 'nothing'
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.button-power 'shutdown'
+run-in-user-session gsettings set org..cinnamon.settings-daemon.plugins.power.critical-battery-action 'shutdown'
+
+
 # Make sure dir exists
 mkdir -p "/media/secondary"
 chown david /media/secondary
