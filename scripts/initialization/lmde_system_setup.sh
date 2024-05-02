@@ -63,6 +63,11 @@ run-in-user-session gsettings set org.x.editor.plugins active-plugins "['sort', 
 echo "### Setting update manager to hide icon unless updates are available ###" ##############################################################################
 run-in-user-session gsettings set com.linuxmint.updates hide-systray true
 
+
+echo "### Ignore timeshift message ###" ##############################################################################
+run-in-user-session gsettings set com.linuxmint.report ignored-reports "['timeshift-no-setup']"
+
+
 echo "### Setting notification settings ###" ##############################################################################
 run-in-user-session gsettings set org.cinnamon.desktop.notifications bottom-notifications true
 run-in-user-session gsettings set org.cinnamon.desktop.notifications remove-old true
