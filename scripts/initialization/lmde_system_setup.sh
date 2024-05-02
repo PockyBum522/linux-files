@@ -19,8 +19,33 @@ echo "### Changing grub timeout to 1s ###" #####################################
 sed -i '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=1' /etc/default/grub
 update-grub
 
-echo "### Updating installed packages ###" ##############################################################################
 
+echo "### Setting up dirs for where to put appimages ###" ################################################################
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+
+mkdir -p "$USER_HOME/.local"
+APP_INSTALLS_DIR="$USER_HOME/.local/share"
+
+if [ ! -f "$APP_INSTALLS_DIR" ]; then
+    mkdir -p "$APP_INSTALLS_DIR"
+fi
+
+BEEPER_INSTALLS_DIR="$USER_HOME/.local/share/beeper"
+if [ ! -f "$BEEPER_INSTALLS_DIR" ]; then
+    mkdir -p "$BEEPER_INSTALLS_DIR"
+fi
+
+KMONAD_INSTALL_DIR="$USER_HOME/.local/share/beeper"
+if [ ! -f "$KMONAD_INSTALL_DIR" ]; then
+    mkdir -p "$KMONAD_INSTALL_DIR"
+fi
+
+
+echo "### Downloading kmonad ###" ##############################################################################
+curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/bin/kmonad > "$KMONAD_INSTALL_DIR/kmonad"
+
+
+echo "### Updating installed packages ###" ##############################################################################
 wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null ## Get the @shiftkey package feed for github desktop
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
 
@@ -60,21 +85,6 @@ xdotool key XF86AudioLowerVolume
 xdotool key XF86AudioLowerVolume
 xdotool key XF86AudioLowerVolume
 
-echo "### Setting up dirs for where to put appimages ###" ################################################################
-USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
-
-mkdir -p "$USER_HOME/.local"
-APP_INSTALLS_DIR="$USER_HOME/.local/share"
-
-if [ ! -f "$APP_INSTALLS_DIR" ]; then
-    mkdir -p "$APP_INSTALLS_DIR"
-fi
-
-BEEPER_INSTALLS_DIR="$USER_HOME/.local/share/beeper"
-
-if [ ! -f "$USER_HOME/.local/share/beeper" ]; then
-    mkdir -p "$BEEPER_INSTALLS_DIR"
-fi
 
 echo "### Disabling LMDE welcome dialog at startup ###" ################################################################
 if [ ! -f "$USER_HOME/.config/autostart/mintwelcome.desktop" ]; then
