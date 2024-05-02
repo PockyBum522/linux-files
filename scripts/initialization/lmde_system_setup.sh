@@ -81,6 +81,59 @@ sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor scheme co
 echo "### Setting update manager to hide icon unless updates are available ###" ##############################################################################
 sudo -H -u david bash -c gsettings set com.linuxmint.updates hide-systray true
 
+echo "### Setting notification settings ###" ##############################################################################
+sudo -H -u david bash -c gsettings set org.cinnamon.desktop.notifications bottom-notifications true
+sudo -H -u david bash -c gsettings set org.cinnamon.desktop.notifications remove-old true
+sudo -H -u david bash -c gsettings set org.cinnamon.desktop.notifications notification-duration 3
+
+
+echo "### Setting nemo file manager settings ###" ##############################################################################
+sudo -H -u david bash -c gsettings set org.nemo.list-view default-zoom-level 'smaller'
+sudo -H -u david bash -c gsettings set org.nemo.preferences default-folder-viewer 'list-view'
+sudo -H -u david bash -c gsettings set org.nemo.preferences click-policy 'single'
+sudo -H -u david bash -c gsettings set org.nemo.preferences start-with-dual-pane true
+sudo -H -u david bash -c gsettings set org.nemo.preferences ignore-view-metadata true
+sudo -H -u david bash -c gsettings set org.nemo.preferences click-double-parent-folder true
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-full-path-titles true
+sudo -H -u david bash -c gsettings set org.nemo.preferences tooltips-on-desktop true
+sudo -H -u david bash -c gsettings set org.nemo.preferences tooltips-show-file-type true
+sudo -H -u david bash -c gsettings set org.nemo.preferences tooltips-show-mod-date true
+sudo -H -u david bash -c gsettings set org.nemo.preferences tooltips-show-birth-date true
+sudo -H -u david bash -c gsettings set org.nemo.preferences tooltips-show-access-date true
+sudo -H -u david bash -c gsettings set org.nemo.preferences tooltips-show-path true
+sudo -H -u david bash -c gsettings set org.nemo.preferences tooltips-in-list-view true
+sudo -H -u david bash -c gsettings set org.nemo.preferences tooltips-in-icon-view true
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-new-folder-icon-toolbar true
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-open-in-terminal-toolbar true
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-compact-view-icon-toolbar false
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-show-thumbnails-toolbar true
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-icon-view-icon-toolbar true
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-reload-icon-toolbar true
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-computer-icon-toolbar true
+sudo -H -u david bash -c gsettings set org.nemo.preferences menu-config.selection-menu-make-link true
+sudo -H -u david bash -c gsettings set org.nemo.preferences menu-config.selection-menu-duplicate true
+sudo -H -u david bash -c gsettings set org.nemo.preferences show-location-entry true
+sudo -H -u david bash -c gsettings set org.nemo.list-view default-column-order "['name', 'size', 'type', 'date_modified', 'date_created_with_time', 'date_accessed', 'date_created', 'detailed_type', 'group', 'where', 'mime_type', 'date_modified_with_time', 'octal_permissions', 'owner', 'permissions']"
+sudo -H -u david bash -c gsettings set org.nemo.list-view default-visible-columns "['name', 'size', 'type', 'date_modified', 'date_created', 'owner']"
+sudo -H -u david bash -c gsettings set org.nemo.window-state side-pane-view 'tree'
+
+
+echo "### Setting firefox keyboard shortcut ###" ##############################################################################
+sudo -H -u david bash -c gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__']"
+sudo -H -u david bash -c gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__', 'custom0']"
+sudo -H -u david bash -c dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Alt>f']"
+sudo -H -u david bash -c dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'firefox'"
+sudo -H -u david bash -c dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Firefox'"
+
+# Make sure dir exists
+
+if [ ! -f "/media/secondary" ]; then
+    mkdir /media/secondary
+fi
+chown /media/secondary david
+
+sudo -H -u david bash -c gsettings set org.x.apps.favorites list "['computer:///::inode/directory', 'file:///home/david::inode/directory', 'file:///media/secondary::inode/directory', 'file:///media/secondary/Dropbox::inode/directory', 'file:///media/secondary/repos::inode/directory']"
+
 
 #echo "### Setting panel settings ###" ##############################################################################
 #sudo -H -u david bash -c 
@@ -106,6 +159,12 @@ apt install -y xdotool
 apt install -y github-desktop
 apt install -y barrier
 apt install -y dropbox
+apt install -y flameshot
+
+
+echo "### Installing common programs, flatpak edition ###" ###############################################################################
+flatpak install -y com.github.dail8859.NotepadNext
+
 
 # Language packs
 apt install -y wbritish
