@@ -5,6 +5,7 @@ set -o pipefail
 
 echo "### Changing grub timeout to 1s ###" ##############################################################################
 sed -i '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=1' /etc/default/grub
+sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/c\GRUB_CMDLINE_LINUX_DEFAULT="quiet"' /etc/default/grub.d/50_lmde.cfg
 update-grub
 
 
