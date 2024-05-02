@@ -100,6 +100,9 @@ apt install -y github-desktop
 apt install -y barrier
 apt install -y dropbox
 
+# Language packs
+apt install -y wbritish
+apt install -y firefox-l10n-en
 
 echo "### Adding barrier config ###" ###############################################################################
 BARRIER_CONFIG_DIR="$USER_HOME/.config/Debauchee"
@@ -107,6 +110,14 @@ if [ ! -f "$BARRIER_CONFIG_DIR" ]; then
     mkdir -p "$BARRIER_CONFIG_DIR"
     curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/Barrier.conf > "$BARRIER_CONFIG_DIR/Barrier.conf"
 fi
+
+
+echo "### Adding tmux config ###" ###############################################################################
+curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/.tmux.conf > "$USER_HOME/.tmux.conf"
+
+
+echo "### Adding vim config ###" ###############################################################################
+curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/.vimrc > "$USER_HOME/.vimrc"
 
 
 echo "### Disabling LMDE welcome dialog at startup ###" ################################################################
