@@ -78,6 +78,9 @@ echo "### Setting xed settings ###" ############################################
 sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor display-line-numbers true
 sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor scheme cobalt
 
+echo "### Setting update manager to hide icon unless updates are available ###" ##############################################################################
+sudo -H -u david bash -c gsettings set com.linuxmint.updates hide-systray true
+
 
 #echo "### Setting panel settings ###" ##############################################################################
 #sudo -H -u david bash -c 
