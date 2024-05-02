@@ -116,6 +116,26 @@ BARRIER_CONFIG_DIR="$USER_HOME/.config/Debauchee"
 if [ ! -f "$BARRIER_CONFIG_DIR" ]; then
     mkdir -p "$BARRIER_CONFIG_DIR"
     curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/Barrier.conf > "$BARRIER_CONFIG_DIR/Barrier.conf"
+
+    cat >> "$USER_HOME/.config/autostart/barrier.desktop"<<EOF 
+[Desktop Entry]
+Type=Application
+Name=Barrier
+Comment=Keyboard and mouse sharing solution
+Exec=barrier
+Icon=barrier
+Terminal=false
+Categories=Utility;RemoteAccess;
+Keywords=keyboard;mouse;sharing;network;share;
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=Barrier
+Comment[en_US]=Keyboard and mouse sharing solution
+X-GNOME-Autostart-Delay=15
+
+EOF
+
 fi
 
 
