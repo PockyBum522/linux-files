@@ -236,8 +236,15 @@ if [ ! -f "$USER_HOME/Desktop/Authenticator" ]; then
 fi
 
 
-case $USER_RESPONSE_NVIDIA_INSTALL in  
-  y|Y) echo "### Installing nvidia driver ###" && apt install -y nvidia-driver ;; ###########################################################################
-  #n|N) echo no ;; 
-  *) echo dont know ;; 
-esac
+if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
+    echo "### Installing nvidia driver ###" 
+    apt install -y nvidia-driver ;; ###########################################################################
+
+    # Set DPI fractional scaling on
+    gsettings set org.cinnamon.muffin experimental-features "['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']"
+fi
+
+if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
+    echo "### Installing nvidia driver ###" 
+    apt install -y nvidia-driver ;; ###########################################################################
+fi
