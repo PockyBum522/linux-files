@@ -114,19 +114,19 @@ run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybind
 
 
 echo "### Setting power settings ###" ##############################################################################
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-display-ac 1800
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.lid-close-ac-action 'suspend'
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.lid-close-battery-action 'suspend'
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-display-battery 1800
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-inactive-ac-timeout 0
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-inactive-battery-timeout 0
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-display-battery 300
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-inactive-battery-timeout 600
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-inactive-ac-timeout 21800
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.lid-close-ac-action 'nothing'
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.lid-close-battery-action 'nothing'
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.button-power 'shutdown'
-run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.critical-battery-action 'shutdown'
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-ac 1800
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power lid-close-ac-action 'suspend'
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power lid-close-battery-action 'suspend'
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 1800
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 300
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-battery-timeout 600
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-ac-timeout 21800
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power lid-close-ac-action 'nothing'
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power lid-close-battery-action 'nothing'
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power button-power 'shutdown'
+run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power critical-battery-action 'shutdown'
 
 
 # Make sure dir exists
@@ -341,7 +341,7 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     apt install -y nvidia-driver 
     
     # Set UPS power settings and disable sleep on AC
-    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-inactive-ac-timeout 0
-    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-inactive-battery-timeout 120
-    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power.sleep-display-battery 60
+    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-battery-timeout 120
+    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 60
 fi
