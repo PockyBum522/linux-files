@@ -30,10 +30,14 @@ apt-get -y dist-upgrade
 
 
 echo "### Setting theme to dark mode ###" ##############################################################################
+sudo -H -u david bash -c gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
+sudo -H -u david bash -c gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y-Dark"
+sudo -H -u david bash -c gsettings set org.cinnamon.theme name "Mint-Y-Dark"
 
-sudo -H -u otheruser bash -c gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
-sudo -H -u otheruser bash -c gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y-Dark"
-sudo -H -u otheruser bash -c gsettings set org.cinnamon.theme name "Mint-Y-Dark"
+
+echo "### Setting xed settings ###" ##############################################################################
+sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor display-line-numbers true
+sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor scheme cobalt
 
 
 echo "### Installing common programs ###" ###############################################################################
@@ -92,7 +96,6 @@ fi
 
 
 echo "### Downloading latest beeper appimage ###" #########################################################################
-
 if [ ! -f "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage" ]; then
     curl https://download.beeper.com/linux/appImage/x64 > "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage"
 fi
@@ -105,7 +108,6 @@ fi
 
 
 echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
-
 TMP_DIR="/tmp"
 INSTALL_DIR="$USER_HOME/.local/share/jetbrains/toolbox/bin"
 SYMLINK_DIR="$USER_HOME/.local/bin"
@@ -144,7 +146,6 @@ echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
 
 
 echo "### Installing Yubico Authenticator ###" ###########################################################################
-
 apt-get -y install pcscd
 systemctl enable --now pcscd
 
