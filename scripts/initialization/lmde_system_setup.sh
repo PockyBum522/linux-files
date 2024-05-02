@@ -78,6 +78,12 @@ echo "### Setting xed settings ###" ############################################
 sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor display-line-numbers true
 sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor scheme cobalt
 
+sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor.bracket-matching true
+sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor.highlight-current-line true
+sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor.auto-indent true
+sudo -H -u david bash -c gsettings set org.x.editor.plugins.active-plugins "['sort', 'filebrowser', 'docinfo', 'joinlines', 'spell', 'textsize', 'open-uri-context-menu', 'modelines', 'time']"
+
+
 echo "### Setting update manager to hide icon unless updates are available ###" ##############################################################################
 sudo -H -u david bash -c gsettings set com.linuxmint.updates hide-systray true
 
