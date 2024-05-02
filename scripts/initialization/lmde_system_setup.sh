@@ -10,51 +10,88 @@
 # TODO: Flameshot install and config for printscreen starting region ss
 # TODO: Parcellite install and config for Alt + C to show history, history items = 300
 # TODO: k4dirstat install
+# TODO: Set grub timeout to 1s
 
 set -e
 set -o pipefail
 
-################################################################
-echo "### To change grub settings: ###"
-echo "### sudo nano /etc/default/grub ###"
-echo "### Then: sudo grub-update ###"
+echo "### Changing grub timeout to 1s ###" ##############################################################################
+sed -i '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=1' /etc/default/grub
+update-grub
+
+echo "### Updating installed packages ###" ##############################################################################
+
+wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null ## Get the @shiftkey package feed for github desktop
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
 
 apt update
 apt-get -y upgrade
 apt-get -y dist-upgrade
 
-################################################################
-echo "### Setting theme to dark mode ###"
 
-gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
-gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y-Dark"
-gsettings set org.cinnamon.theme name "Mint-Y-Dark"
+echo "### Setting theme to dark mode ###" ##############################################################################
 
-################################################################
-echo "### Installing common programs ###"
+sudo -H -u otheruser bash -c gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
+sudo -H -u otheruser bash -c gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y-Dark"
+sudo -H -u otheruser bash -c gsettings set org.cinnamon.theme name "Mint-Y-Dark"
 
-apt-get -y install tmux
-apt-get -y install vim
-apt-get -y install git
-apt-get -y install htop
-apt-get -y install mint-meta-codecs
-apt-get -y install feh
 
-################################################################
-echo "### Setting up dirs for where to put appimages ###"
+echo "### Installing common programs ###" ###############################################################################
 
+apt install -y install tmux
+apt install -y install vim
+apt install -y install git
+apt install -y install htop
+apt install -y install mint-meta-codecs
+apt install -y install feh
+apt install -y xdotool
+apt install -y github-desktop
+
+
+echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
+xdotool key XF86AudioLowerVolume
+xdotool key XF86AudioLowerVolume
+xdotool key XF86AudioLowerVolume
+xdotool key XF86AudioLowerVolume
+xdotool key XF86AudioLowerVolume
+xdotool key XF86AudioLowerVolume
+
+echo "### Setting up dirs for where to put appimages ###" ################################################################
 USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 
 mkdir -p "$USER_HOME/.local"
 APP_INSTALLS_DIR="$USER_HOME/.local/share"
 
-mkdir -p "$APP_INSTALLS_DIR"
+if [ ! -f "$APP_INSTALLS_DIR" ]; then
+    mkdir -p "$APP_INSTALLS_DIR"
+fi
 
-BEEPER_INSTALLS_DIR="$APP_INSTALLS_DIR/Beeper"
-mkdir -p "$BEEPER_INSTALLS_DIR"
+BEEPER_INSTALLS_DIR="$USER_HOME/.local/share/beeper"
 
-###############################################################
-echo "### Downloading latest beeper appimage ###"
+if [ ! -f "$USER_HOME/.local/share/beeper" ]; then
+    mkdir -p "$BEEPER_INSTALLS_DIR"
+fi
+
+echo "### Disabling LMDE welcome dialog at startup ###" ################################################################
+if [ ! -f "$USER_HOME/.config/autostart/mintwelcome.desktop" ]; then
+    cat >> "$USER_HOME/.config/autostart/mintwelcome.desktop"<<EOF 
+[Desktop Entry]
+Encoding=UTF-8
+Name=mintwelcome
+Comment=Linux Mint Welcome Screen
+Icon=mintwelcome
+Exec=mintwelcome-launcher
+Terminal=false
+Type=Application
+Categories=
+X-GNOME-Autostart-enabled=false
+
+EOF
+
+fi
+
+
+echo "### Downloading latest beeper appimage ###" #########################################################################
 
 if [ ! -f "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage" ]; then
     curl https://download.beeper.com/linux/appImage/x64 > "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage"
@@ -66,11 +103,11 @@ if [ ! -f "$USER_HOME/Desktop/Beeper" ]; then
     ln -s "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage" "$USER_HOME/Desktop/Beeper"
 fi
 
-##############################################################
-echo "### Downloading and installing jetbrains toolbox ###"
+
+echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
 
 TMP_DIR="/tmp"
-INSTALL_DIR="$APP_INSTALLS_DIR/JetBrains/Toolbox/bin"
+INSTALL_DIR="$USER_HOME/.local/share/jetbrains/toolbox/bin"
 SYMLINK_DIR="$USER_HOME/.local/bin"
 
 echo -e "\e[94mFetching the URL of the latest version...\e[39m"
@@ -101,25 +138,25 @@ else
 	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
 fi
 
-#############################################################
-echo "### Adding $USER_HOME/.local/bin to PATH ###"
+
+echo "### Adding $USER_HOME/.local/bin to PATH ###" ######################################################################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
 
-############################################################
-echo "### Installing Yubico Authenticator ###"
+
+echo "### Installing Yubico Authenticator ###" ###########################################################################
 
 apt-get -y install pcscd
 systemctl enable --now pcscd
 
-mkdir -p "$APP_INSTALLS_DIR/Yubico-Authenticator"
+mkdir -p "$APP_INSTALLS_DIR/yubico-authenticator"
 
-if [ ! -f "$APP_INSTALLS_DIR/Yubico-Authenticator/Yubico-Authenticator.appimage" ]; then
+if [ ! -f "$APP_INSTALLS_DIR/yubico-authenticator/Yubico-Authenticator.appimage" ]; then
     curl https://developers.yubico.com/yubioath-flutter/Releases/yubioath-desktop-latest-linux.AppImage > "$APP_INSTALLS_DIR/Yubico-Authenticator/Yubico-Authenticator.appimage"
 fi
 
-chmod +x "$APP_INSTALLS_DIR/Yubico-Authenticator/Yubico-Authenticator.appimage"
+chmod +x "$APP_INSTALLS_DIR/yubico-authenticator/Yubico-Authenticator.appimage"
 
 if [ ! -f "$USER_HOME/Desktop/Authenticator" ]; then
-    ln -s "$APP_INSTALLS_DIR/Yubico-Authenticator/Yubico-Authenticator.appimage" "$USER_HOME/Desktop/Authenticator"
+    ln -s "$APP_INSTALLS_DIR/yubico-authenticator/Yubico-Authenticator.appimage" "$USER_HOME/Desktop/Authenticator"
 fi
 
