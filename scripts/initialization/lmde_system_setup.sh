@@ -1,30 +1,11 @@
 #! /bin/bash
 
-# TODO: Barrier install and config)
-# TODO: Kmonad download and automatic start + config download from github
-# TODO: Split grouped windows in taskbar
-# TODO: en language packs for LMDE
-# TODO: Dropbox
-# TODO: Set boot and shutdown screens to actually display messages
-# TODO: Wallpaper shuffle
-# TODO: Flameshot install and config for printscreen starting region ss
-# TODO: Parcellite install and config for Alt + C to show history, history items = 300
-# TODO: k4dirstat install
-# TODO: Set grub timeout to 1s
-
 set -e
 set -o pipefail
 
 echo "### Changing grub timeout to 1s ###" ##############################################################################
 sed -i '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=1' /etc/default/grub
 update-grub
-
-read -n1 -p "Install NVIDIA drivers? [y,n]" USER_RESPONSE_NVIDIA_INSTALL 
-#case $USER_RESPONSE_NVIDIA_INSTALL in  
-#  y|Y) echo yes ;; 
-#  #n|N) echo no ;; 
-#  *) echo dont know ;; 
-#esac
 
 
 echo "### Setting up dirs for where to put appimages ###" ################################################################
@@ -166,6 +147,7 @@ apt install -y github-desktop
 apt install -y barrier
 apt install -y dropbox
 apt install -y flameshot
+apt install -y k4dirstat
 
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
