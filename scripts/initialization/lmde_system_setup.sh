@@ -19,6 +19,13 @@ echo "### Changing grub timeout to 1s ###" #####################################
 sed -i '/GRUB_TIMEOUT=5/c\GRUB_TIMEOUT=1' /etc/default/grub
 update-grub
 
+read -n1 -p "Install NVIDIA drivers? [y,n]" USER_RESPONSE_NVIDIA_INSTALL 
+#case $USER_RESPONSE_NVIDIA_INSTALL in  
+#  y|Y) echo yes ;; 
+#  #n|N) echo no ;; 
+#  *) echo dont know ;; 
+#esac
+
 
 echo "### Setting up dirs for where to put appimages ###" ################################################################
 USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
@@ -42,7 +49,14 @@ fi
 
 
 echo "### Downloading kmonad ###" ##############################################################################
-curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/bin/kmonad > "$KMONAD_INSTALL_DIR/kmonad"
+if [ ! -f "$KMONAD_INSTALL_DIR" ]; then
+    curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/bin/kmonad > "$KMONAD_INSTALL_DIR/kmonad"
+    curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/kmonad/default_layers.kbd > "$KMONAD_INSTALL_DIR/default_layers.kbd"
+    groupadd uinput
+    usermod -aG input,uinput david
+    echo KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput" > /etc/udev/rules.d/80-kmonad.rules
+    modprobe uinput
+fi
 
 
 echo "### Updating installed packages ###" ##############################################################################
@@ -171,3 +185,9 @@ if [ ! -f "$USER_HOME/Desktop/Authenticator" ]; then
     ln -s "$APP_INSTALLS_DIR/yubico-authenticator/Yubico-Authenticator.appimage" "$USER_HOME/Desktop/Authenticator"
 fi
 
+
+case $USER_RESPONSE_NVIDIA_INSTALL in  
+  y|Y) echo "### Installing nvidia driver ###" && apt install -y nvidia-driver ;; ###########################################################################
+  #n|N) echo no ;; 
+  *) echo dont know ;; 
+esac
