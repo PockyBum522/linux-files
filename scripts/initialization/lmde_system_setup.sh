@@ -79,19 +79,6 @@ sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor display-l
 sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor scheme cobalt
 
 
-echo "### Installing common programs ###" ###############################################################################
-
-apt install -y install tmux
-apt install -y install vim
-apt install -y install git
-apt install -y install htop
-apt install -y install mint-meta-codecs
-apt install -y install feh
-apt install -y xdotool
-apt install -y github-desktop
-apt install -y barrier
-
-
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
 xdotool key XF86AudioLowerVolume
 xdotool key XF86AudioLowerVolume
@@ -99,6 +86,27 @@ xdotool key XF86AudioLowerVolume
 xdotool key XF86AudioLowerVolume
 xdotool key XF86AudioLowerVolume
 xdotool key XF86AudioLowerVolume
+
+
+echo "### Installing common programs ###" ###############################################################################
+apt install -y tmux
+apt install -y vim
+apt install -y git
+apt install -y htop
+apt install -y mint-meta-codecs
+apt install -y feh
+apt install -y xdotool
+apt install -y github-desktop
+apt install -y barrier
+apt install -y dropbox
+
+
+echo "### Adding barrier config ###" ###############################################################################
+BARRIER_CONFIG_DIR="$USER_HOME/.config/Debauchee"
+if [ ! -f "$BARRIER_CONFIG_DIR" ]; then
+    mkdir -p "$BARRIER_CONFIG_DIR"
+    curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/Barrier.conf > "$BARRIER_CONFIG_DIR/Barrier.conf"
+fi
 
 
 echo "### Disabling LMDE welcome dialog at startup ###" ################################################################
