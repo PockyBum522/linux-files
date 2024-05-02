@@ -89,6 +89,7 @@ apt install -y install mint-meta-codecs
 apt install -y install feh
 apt install -y xdotool
 apt install -y github-desktop
+apt install -y barrier
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
