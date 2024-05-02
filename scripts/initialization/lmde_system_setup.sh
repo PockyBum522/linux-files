@@ -164,6 +164,8 @@ else
 	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
 fi
 
+sudo chown david $USER_HOME/.local/share"
+
 
 echo "### Adding $USER_HOME/.local/bin to PATH ###" ######################################################################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
