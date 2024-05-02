@@ -79,6 +79,10 @@ sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor display-l
 sudo -H -u david bash -c gsettings set org.x.editor.preferences.editor scheme cobalt
 
 
+#echo "### Setting panel settings ###" ##############################################################################
+#sudo -H -u david bash -c 
+
+
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
 xdotool key XF86AudioLowerVolume
 xdotool key XF86AudioLowerVolume
