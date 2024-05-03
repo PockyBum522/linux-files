@@ -234,6 +234,9 @@ EOF
     fi
 fi
 
+chown david /home/david/Debauchee
+chown david /home/david/Debauchee/Barrier.conf
+
 
 echo "### Adding tmux config ###" ###############################################################################
 curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/.tmux.conf > "$USER_HOME/.tmux.conf"
