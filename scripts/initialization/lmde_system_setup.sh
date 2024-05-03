@@ -182,6 +182,7 @@ apt install -y k4dirstat
 apt install -y tigervnc-viewer
 apt install -y copyq
 apt install -y shutter
+apt install -y evtest
 
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
