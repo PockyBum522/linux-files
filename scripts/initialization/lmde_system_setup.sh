@@ -234,8 +234,8 @@ EOF
     fi
 fi
 
-chown david /home/david/Debauchee
-chown david /home/david/Debauchee/Barrier.conf
+chown david /home/david/.config/Debauchee
+chown david /home/david/.config/Debauchee/Barrier.conf
 
 
 echo "### Adding tmux config ###" ###############################################################################
