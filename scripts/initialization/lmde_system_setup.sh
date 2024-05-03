@@ -1,5 +1,7 @@
 #! /bin/bash
 
+#TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
+
 set -e
 set -o pipefail
 
@@ -177,6 +179,9 @@ apt install -y dropbox
 apt install -y flameshot
 apt install -y gparted
 apt install -y k4dirstat
+apt install -y tigervnc-viewer
+apt install -y copyq
+apt install -y shutter
 
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
