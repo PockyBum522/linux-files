@@ -186,6 +186,7 @@ apt install -y tigervnc-viewer
 apt install -y copyq
 apt install -y shutter
 apt install -y evtest
+apt install -y filezilla
 
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
