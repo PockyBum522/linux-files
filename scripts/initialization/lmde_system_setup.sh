@@ -189,6 +189,7 @@ apt install -y evtest
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
 flatpak install -y com.github.dail8859.NotepadNext
 flatpak install -y org.fkoehler.KTailctl
+flatpak install -y com.yubico.yubioath
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
@@ -346,23 +347,6 @@ sudo chown david "$USER_HOME/.local/share"
 
 echo "### Adding $USER_HOME/.local/bin to PATH ###" ######################################################################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
-
-
-echo "### Installing Yubico Authenticator ###" ###########################################################################
-apt-get -y install pcscd
-systemctl enable --now pcscd
-
-mkdir -p "$APP_INSTALLS_DIR/yubico-authenticator"
-
-if [ ! -f "$APP_INSTALLS_DIR/yubico-authenticator/Yubico-Authenticator.appimage" ]; then
-    curl https://developers.yubico.com/yubioath-flutter/Releases/yubioath-desktop-latest-linux.AppImage > "$APP_INSTALLS_DIR/yubico-authenticator/Yubico-Authenticator.appimage"
-fi
-
-chmod +x "$APP_INSTALLS_DIR/yubico-authenticator/Yubico-Authenticator.appimage"
-
-if [ ! -f "$USER_HOME/Desktop/Authenticator" ]; then
-    ln -s "$APP_INSTALLS_DIR/yubico-authenticator/Yubico-Authenticator.appimage" "$USER_HOME/Desktop/Authenticator"
-fi
 
 
 if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
