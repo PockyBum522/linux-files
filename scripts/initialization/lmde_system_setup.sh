@@ -179,7 +179,6 @@ apt install -y xdotool
 apt install -y github-desktop
 apt install -y barrier
 apt install -y dropbox
-apt install -y flameshot
 apt install -y gparted
 apt install -y k4dirstat
 apt install -y tigervnc-viewer
