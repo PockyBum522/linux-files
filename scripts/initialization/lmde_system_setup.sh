@@ -354,3 +354,5 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-battery-timeout 120
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 60
 fi
+
+echo "### Finished installing/configuring everything! ###"  ###########################################################################
