@@ -1,6 +1,7 @@
 #! /bin/bash
 
 #TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
+#TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
 
 set -e
 set -o pipefail
@@ -187,6 +188,7 @@ apt install -y evtest
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
 flatpak install -y com.github.dail8859.NotepadNext
+flatpak install -y org.fkoehler.KTailctl
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
@@ -260,6 +262,32 @@ Terminal=false
 Type=Application
 Categories=
 X-GNOME-Autostart-enabled=false
+
+EOF
+
+fi
+
+
+echo "### Setting ktailscale to run at startup ###" ################################################################
+if [ ! -d "$USER_HOME/.config/autostart/ktailscale.desktop" ]
+then
+    cat >> "$USER_HOME/.config/autostart/ktailscale.desktop"<<EOF 
+[Desktop Entry]
+Name=KTailctl
+Comment=GUI for tailscale on the KDE Plasma desktop
+Version=1.5
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=ktailctl org.fkoehler.KTailctl
+Icon=org.fkoehler.KTailctl
+Type=Application
+Terminal=false
+Categories=Qt;KDE;System;
+X-Flatpak=org.fkoehler.KTailctl
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=KTailctl
+Comment[en_US]=GUI for tailscale on the KDE Plasma desktop
+X-GNOME-Autostart-Delay=10
 
 EOF
 
