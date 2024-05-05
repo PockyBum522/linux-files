@@ -95,7 +95,7 @@
   cesc (tap-next-release esc lctl)
 
   ;; Short alias for navigation layer
-  navi (tap-next-release ; (layer-toggle leadernavigation))
+  navi (tap-next ; (layer-toggle leadernavigation))
 
   ;; Short alias for arrows layer
   arrs (tap-next-release spc (layer-toggle leaderarrows))
