@@ -1,7 +1,10 @@
 #! /bin/bash
 
-#TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
-#TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
+# TODO: https://github.com/AdnanHodzic/displaylink-debian
+
+# TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
+# TODO: Alt + 2 for github-desktop
+# TODO: Alt + T for beeper
 
 set -e
 set -o pipefail
