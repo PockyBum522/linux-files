@@ -58,6 +58,12 @@ run-in-user-session gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint
 run-in-user-session gsettings set org.cinnamon.desktop.interface icon-theme 'Mint-L-Dark'
 run-in-user-session gsettings set org.cinnamon.theme name 'Mint-L-Dark'
 
+echo "### Turn off most sounds ###" ##############################################################################
+run-in-user-session gsettings set org.cinnamon.sounds notification-enabled false
+run-in-user-session gsettings set org.cinnamon.sounds login-enabled false
+run-in-user-session gsettings set org.cinnamon.sounds logout-enabled false
+run-in-user-session gsettings set org.cinnamon.sounds switch-enabled false
+run-in-user-session gsettings set org.cinnamon.sounds tile-enabled false
 
 echo "### Setting xed settings ###" ##############################################################################
 run-in-user-session gsettings set org.x.editor.preferences.editor display-line-numbers true
