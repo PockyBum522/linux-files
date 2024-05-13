@@ -201,6 +201,9 @@ echo "### Installing common programs, flatpak edition ###" #####################
 flatpak install -y com.github.dail8859.NotepadNext
 flatpak install -y org.fkoehler.KTailctl
 flatpak install -y com.yubico.yubioath
+flatpak install -y org.remmina.Remmina
+
+
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
