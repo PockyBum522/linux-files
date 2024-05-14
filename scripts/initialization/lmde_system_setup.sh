@@ -195,6 +195,7 @@ apt install -y copyq
 apt install -y shutter
 apt install -y evtest
 apt install -y filezilla
+apt install -y mosquitto-clients
 
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
