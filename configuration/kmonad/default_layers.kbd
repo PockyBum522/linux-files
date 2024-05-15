@@ -92,13 +92,13 @@
  
 (defalias 
   ;; Caps lock > Escape if tapped, Ctrl if held
-  cesc (tap-hold-next-release esc lctl)
+  cesc (tap-hold-next-release 200 esc lctl)
 
-  ;; Short alias for navigation layer (Disabled because : key is laggy)
-  navi (tap-hold-next-release ; (layer-toggle leadernavigation))
+  ;; Short alias for navigation layer
+  navi (tap-hold-next-release 200 ; (layer-toggle leadernavigation))
 
   ;; Short alias for arrows layer
-  arrs (tap-hold-next-release spc (layer-toggle leaderarrows))
+  arrs (tap-hold-next-release 200 spc (layer-toggle leaderarrows))
 )
 
 #|
