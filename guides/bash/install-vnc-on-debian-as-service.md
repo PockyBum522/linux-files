@@ -1,15 +1,11 @@
-Run the following to install:
+# Run the following to install:
 
 sudo apt-get install x11vnc -y
 
 sudo nano /etc/systemd/system/x11vnc.service
 
 
-
-
-
-
-Insert this into the file:
+# Insert this into the file:
 
 [Unit]
 Description="x11vnc"
@@ -26,21 +22,17 @@ Restart-sec=2
 WantedBy=multi-user.target
 
 
-
-
-then run
+# then run
 
 x11vnc -storepasswd
 
 
-
-
-Then, start with:
+# Then, start with:
 
 sudo systemctl daemon-reload
 sudo systemctl start x11vnc
 
-And ensure the service starts on boot:
+# And ensure the service starts on boot:
 
 sudo systemctl enable x11vnc
 
