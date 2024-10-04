@@ -195,6 +195,7 @@ apt install -y shutter
 apt install -y evtest
 apt install -y filezilla
 apt install -y mosquitto-clients
+apt install -y haskell-stack                    # for kmonad
 
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
