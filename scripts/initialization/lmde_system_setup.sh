@@ -329,7 +329,7 @@ mkdir -p /home/david/.local/share
 cd /home/david/.local/share
 git clone https://github.com/kmonad/kmonad.git
 cd kmonad
-stack build
+stack install
 
 
 echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
