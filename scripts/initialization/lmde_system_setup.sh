@@ -324,6 +324,14 @@ then
 fi
 
 
+echo "### Setting up kmonad ###" ##############################################################
+mkdir -p /home/david/.local/share
+cd /home/david/.local/share
+git clone https://github.com/kmonad/kmonad.git
+cd kmonad
+stack build
+
+
 echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
 TMP_DIR="/tmp"
 INSTALL_DIR="$USER_HOME/.local/share/jetbrains/toolbox/bin"
