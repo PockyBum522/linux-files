@@ -92,7 +92,6 @@ echo "### Setting nemo file manager settings ###" ##############################
 run-in-user-session gsettings set org.nemo.list-view default-zoom-level 'smaller'
 run-in-user-session gsettings set org.nemo.preferences default-folder-viewer 'list-view'
 run-in-user-session gsettings set org.nemo.preferences click-policy 'single'
-run-in-user-session gsettings set org.nemo.preferences start-with-dual-pane true
 run-in-user-session gsettings set org.nemo.preferences ignore-view-metadata true
 run-in-user-session gsettings set org.nemo.preferences click-double-parent-folder true
 run-in-user-session gsettings set org.nemo.preferences show-full-path-titles true
