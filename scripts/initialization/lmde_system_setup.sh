@@ -390,4 +390,7 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 60
 fi
 
+# Add "open in vscode" to when you right click on an empty folder in linux
+wget https://raw.githubusercontent.com/mhsattarian/nemo-open-in-vscode/master/vscode.nemo_action -O ~/.local/share/nemo/actions/vscode.nemo_action
+
 echo "### Finished installing/configuring everything! ###"  ###########################################################################
