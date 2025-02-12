@@ -1,0 +1,9 @@
+[Nemo Action]
+Active=true
+Name=Open Folder as CLion Project
+Comment=Open Folder as clion Project
+Exec=/home/david/.local/share/JetBrains/Toolbox/apps/clion/bin/clion "%P"
+Icon-Name=clion
+Selection=any
+Extensions=any
+Terminal=false

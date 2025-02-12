@@ -1,0 +1,9 @@
+[Nemo Action]
+Active=true
+Name=Open Folder as PyCharm Project
+Comment=Open Folder as PyCharm Project
+Exec=/home/david/.local/share/JetBrains/Toolbox/apps/pycharm-professional/bin/pycharm "%P"
+Icon-Name=pycharm
+Selection=any
+Extensions=any
+Terminal=false
