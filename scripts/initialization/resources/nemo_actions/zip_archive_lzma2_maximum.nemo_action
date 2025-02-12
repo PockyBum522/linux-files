@@ -1,0 +1,11 @@
+[Nemo Action]
+Active=true
+Name=7z - MX=9
+Comment=Makes .7z LZMA2 file with mx=9 compression
+Exec=/usr/bin/bash -c "/home/$USER/.local/share/nemo/actions/scripts/zip_archive_lzma2_maximum.sh %F"
+Icon-Name=code
+Selection=any
+Extensions=any
+Quote=double
+Terminal=true
+
