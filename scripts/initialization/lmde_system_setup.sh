@@ -38,19 +38,6 @@ KMONAD_INSTALL_DIR="$USER_HOME/.local/share/kmonad"
 mkdir -p "$KMONAD_INSTALL_DIR"
 
 
-echo "### Adding better mirrors ###" ###############################################################################
-cat > "/etc/apt/sources.list.d/official-package-repositories.list"<<EOF 
-deb https://mirror.cs.jmu.edu/pub/linuxmint/packages faye main upstream import backport 
-
-deb http://atl.mirrors.clouvider.net/debian bookworm main contrib non-free non-free-firmware
-deb http://atl.mirrors.clouvider.net/debian bookworm-updates main contrib non-free non-free-firmware
-deb http://security.debian.org/ bookworm-security main contrib non-free non-free-firmware
-
-deb http://atl.mirrors.clouvider.net/debian bookworm-backports main contrib non-free non-free-firmware
-
-EOF
-
-
 echo "### Setting theme to dark mode ###" ##############################################################################
 run-in-user-session gsettings set org.cinnamon.desktop.interface cursor-theme 'Bibata-Modern-Classic'
 run-in-user-session gsettings set org.x.apps.portal color-scheme 'prefer-dark'
@@ -115,7 +102,6 @@ run-in-user-session gsettings set org.nemo.preferences.menu-config selection-men
 run-in-user-session gsettings set org.nemo.preferences show-location-entry true
 run-in-user-session gsettings set org.nemo.list-view default-column-order "['name', 'size', 'type', 'date_modified', 'date_created_with_time', 'date_accessed', 'date_created', 'detailed_type', 'group', 'where', 'mime_type', 'date_modified_with_time', 'octal_permissions', 'owner', 'permissions']"
 run-in-user-session gsettings set org.nemo.list-view default-visible-columns "['name', 'size', 'type', 'date_modified', 'date_created', 'owner']"
-run-in-user-session gsettings set org.nemo.window-state side-pane-view 'tree'
 
 
 echo "### Setting firefox keyboard shortcut ###" ##############################################################################
@@ -142,10 +128,6 @@ run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power but
 run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power critical-battery-action 'shutdown'
 
 
-# Make sure dir exists
-mkdir -p "/media/secondary"
-chown david /media/secondary
-
 run-in-user-session gsettings set org.x.apps.favorites list "['computer:///::inode/directory', 'file:///home/david::inode/directory', 'file:///media/secondary::inode/directory', 'file:///media/secondary/Dropbox::inode/directory', 'file:///media/secondary/repos::inode/directory']"
 
 
@@ -162,10 +144,6 @@ then
     ./"$KMONAD_INSTALL_DIR/kmonad" &
 fi
 
-
-echo "### Updating installed packages ###" ##############################################################################
-wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null ## Get the @shiftkey package feed for github desktop
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
 
 apt update
 apt-get -y upgrade
@@ -186,12 +164,10 @@ apt install -y feh
 apt install -y xdotool
 apt install -y github-desktop
 apt install -y barrier
-apt install -y dropbox
 apt install -y gparted
 apt install -y k4dirstat
 apt install -y tigervnc-viewer
 apt install -y copyq
-apt install -y shutter
 apt install -y evtest
 apt install -y filezilla
 apt install -y mosquitto-clients
@@ -199,12 +175,9 @@ apt install -y haskell-stack                    # for kmonad
 
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
-flatpak install -y com.github.dail8859.NotepadNext
 flatpak install -y org.fkoehler.KTailctl
 flatpak install -y com.yubico.yubioath
 flatpak install -y org.remmina.Remmina
-
-
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
@@ -223,37 +196,40 @@ xdotool key XF86AudioLowerVolume
 apt install -y wbritish
 apt install -y firefox-l10n-en
 
-echo "### Adding barrier config ###" ###############################################################################
-BARRIER_CONFIG_DIR="$USER_HOME/.config/Debauchee"
-if [ ! -d "$BARRIER_CONFIG_DIR" ]
-then
-    mkdir -p "$BARRIER_CONFIG_DIR"
-    curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/Barrier.conf > "$BARRIER_CONFIG_DIR/Barrier.conf"
 
-    if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
-        cat >> "$USER_HOME/.config/autostart/barrier.desktop"<<EOF 
-[Desktop Entry]
-Type=Application
-Name=Barrier
-Comment=Keyboard and mouse sharing solution
-Exec=barrier
-Icon=barrier
-Terminal=false
-Categories=Utility;RemoteAccess;
-Keywords=keyboard;mouse;sharing;network;share;
-X-GNOME-Autostart-enabled=true
-NoDisplay=false
-Hidden=false
-Name[en_US]=Barrier
-Comment[en_US]=Keyboard and mouse sharing solution
-X-GNOME-Autostart-Delay=15
+# This needs to be updated to the config files in seafile
 
-EOF
-    fi
-fi
-
-chown david /home/david/.config/Debauchee
-chown david /home/david/.config/Debauchee/Barrier.conf
+#echo "### Adding barrier config ###" ###############################################################################
+#BARRIER_CONFIG_DIR="$USER_HOME/.config/Debauchee"
+#if [ ! -d "$BARRIER_CONFIG_DIR" ]
+#then
+#    mkdir -p "$BARRIER_CONFIG_DIR"
+#    curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configuration/dotfiles/Barrier.conf > "$BARRIER_CONFIG_DIR/Barrier.conf"
+#
+#    if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
+#        cat >> "$USER_HOME/.config/autostart/barrier.desktop"<<EOF 
+#[Desktop Entry]
+#Type=Application
+#Name=Barrier
+#Comment=Keyboard and mouse sharing solution
+#Exec=barrier
+#Icon=barrier
+#Terminal=false
+#Categories=Utility;RemoteAccess;
+#Keywords=keyboard;mouse;sharing;network;share;
+#X-GNOME-Autostart-enabled=true
+#NoDisplay=false
+#Hidden=false
+#Name[en_US]=Barrier
+#Comment[en_US]=Keyboard and mouse sharing solution
+#X-GNOME-Autostart-Delay=15
+#
+#EOF
+#    fi
+#fi
+#
+#chown david /home/david/.config/Debauchee
+#chown david /home/david/.config/Debauchee/Barrier.conf
 
 
 echo "### Adding tmux config ###" ###############################################################################
@@ -280,7 +256,6 @@ Categories=
 X-GNOME-Autostart-enabled=false
 
 EOF
-
 fi
 
 
@@ -300,13 +275,12 @@ Categories=Qt;KDE;System;
 X-Flatpak=org.fkoehler.KTailctl
 X-GNOME-Autostart-enabled=true
 NoDisplay=false
-Hidden=false
+Hidden=true
 Name[en_US]=KTailctl
 Comment[en_US]=GUI for tailscale on the KDE Plasma desktop
 X-GNOME-Autostart-Delay=10
 
 EOF
-
 fi
 
 
@@ -373,19 +347,16 @@ echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
 
 
 if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
-    echo "### Installing nvidia driver ###"  ###########################################################################
-    apt install -y nvidia-driver 
 
     # Set DPI fractional scaling on
     run-in-user-session gsettings set org.cinnamon.muffin experimental-features "['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']"
 fi
 
 if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
-    echo "### Installing nvidia driver ###" ###########################################################################
-    apt install -y nvidia-driver 
-    
-    # Set UPS power settings and disable sleep on AC
-    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+
+    # Set sleep settings
+    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-ac-timeout 6000
+    run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-ac 1200
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-battery-timeout 120
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 60
 fi
