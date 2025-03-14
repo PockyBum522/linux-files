@@ -215,6 +215,7 @@ apt install -y xbindkeys
 echo "### Setting up keyboard shortcuts ###" ##############################################################################
 # Make custom shortcuts for firefox, beeper, github desktop
 
+# USER_HOME="/home/david"
 # Make default file
 xbindkeys --defaults > "$USER_HOME/.xbindkeysrc"
 
@@ -458,31 +459,6 @@ echo "### Adding $USER_HOME/.local/bin to PATH ###" ############################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
 
 
-echo "### Adding non-grouped window list to main panel ###" ######################################################################
-
-
-#/org/cinnamon/next-applet-id
-#  16
-#
-#/org/cinnamon/enabled-applets
-#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:grouped-window-list@cinnamon.org:2', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:window-list@cinnamon.org:15']
-
-
-# echo "### Removing grouped window list from main panel ###" ######################################################################
-
-#run-in-user-session gsettings set org.cinnamon panels-edit-mode
-#  true
-
-#/org/cinnamon/enabled-applets
-#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:window-list@cinnamon.org:15']
-
-
-# echo "### Moving new non-grouped window list to left side of panel ###" ######################################################################
-
-#/org/cinnamon/enabled-applets
-#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:left:2:window-list@cinnamon.org:15']
-
-
 echo "### Turning off panel edit mode now that panels are done needing to be edited ###" ######################################################################
 
 #run-in-user-session gsettings set org.cinnamon panels-edit-mode
@@ -623,20 +599,36 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     run-in-user-session gsettings set org.cinnamon panels-autohide "['1:false', '2:false', '3:false', '4:false', '5:false', '6:false']"
 
 
-fi
 
-echo "### Setting xed as default file opener for correct filetypes. Apparently .sln counts as text/plain. That is stupid ###" ################################################################
-    cat >> "$USER_HOME/.config/mimeapps.list"<<EOF 
-Default Applications]
-x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
-text/plain=org.x.editor.desktop
-text/markdown=org.x.editor.desktop
+    echo "### Adding non-grouped window list to all panels ###" ######################################################################
 
-[Added Associations]
-text/plain=org.x.editor.desktop;
-text/markdown=org.x.editor.desktop;
+    # Don't know if this is necessary:
+    #/org/cinnamon/panel-edit-mode
+    #  false
+    #
+    #/org/cinnamon/enabled-applets
+    #  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:left:2:window-list@cinnamon.org:15', 'panel2:left:0:window-list@cinnamon.org:17', 'panel4:left:0:window-list@cinnamon.org:18', 'panel5:left:0:window-list@cinnamon.org:19', 'panel6:left:0:window-list@cinnamon.org:20', 'panel3:left:0:window-list@cinnamon.org:21']
+    #
+    # Don't know if this is necessary:
+    #/org/cinnamon/panel-edit-mode
+    #  false
+    #
 
-EOF
+
+    fi
+
+    echo "### Setting xed as default file opener for correct filetypes. Apparently .sln counts as text/plain. That is stupid ###" ################################################################
+        cat >> "$USER_HOME/.config/mimeapps.list"<<EOF 
+    Default Applications]
+    x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+    text/plain=org.x.editor.desktop
+    text/markdown=org.x.editor.desktop
+
+    [Added Associations]
+    text/plain=org.x.editor.desktop;
+    text/markdown=org.x.editor.desktop;
+
+    EOF
 fi
 
 
