@@ -413,94 +413,116 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     # Bottom left
     
 #
-#    /org/cinnamon/panel-zone-icon-sizes
-#      '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2}]'
-#    /org/cinnamon/panel-zone-symbolic-icon-sizes
-#      '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2}]'
-#    /org/cinnamon/panel-zone-text-sizes
-#      '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2}]'
-#    /org/cinnamon/panels-enabled
-#      ['1:0:bottom', '2:5:bottom']
-#    /org/cinnamon/panels-height
-#      ['1:40', '2:40']
-#    /org/cinnamon/panels-hide-delay
-#      ['1:0', '2:0']
-#    /org/cinnamon/panels-show-delay
-#      ['1:0', '2:0']
+#   run-in-user-session gsettings set org.cinnamon panels-zone-icon-sizes '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2}]'
+
+
+    # Modified, might be working?
+    # run-in-user-session gsettings set org.cinnamon.panel zone-icon-sizes "[{'panelId:1', 'left:0', 'center:0', 'right:24'}, {'left:0','center:0','right:0','panelId:2'}]"
+    
+    
+#    run-in-user-session gsettings set org.cinnamon panels-zone-symbolic-icon-sizes "[{'panelId':1,'left':28,'center':28,'right':16},{'left':28,'center':28,'right':28,'panelId':2}]"
+
+#    run-in-user-session gsettings set org.cinnamon panels-zone-text-sizes '[{'panelId':1,'left':0,'center':0,'right':0},{'left':0,'center':0,'right':0,'panelId':2}]'
+
+#    run-in-user-session gsettings set org.cinnamon panels-enabled ['1:0:bottom', '2:5:bottom']
+
+#    run-in-user-session gsettings set org.cinnamon panels-height ['1:40', '2:40']
+
+#    run-in-user-session gsettings set org.cinnamon panels-hide-delay ['1:0', '2:0']
+
+#    run-in-user-session gsettings set org.cinnamon panels-show-delay ['1:0', '2:0']
 
     # Bottom right
 
-#/org/cinnamon/panels-enabled
+#run-in-user-session gsettings set org.cinnamon panels-enabled
 #  ['1:0:bottom', '2:5:bottom', '3:4:bottom']
-#/org/cinnamon/panels-height
+#run-in-user-session gsettings set org.cinnamon panels-height
 #  ['1:40', '2:40', '3:40']
-#/org/cinnamon/panels-hide-delay
+#run-in-user-session gsettings set org.cinnamon panels-hide-delay
 #  ['1:0', '2:0', '3:0']
-#/org/cinnamon/panels-show-delay
+#run-in-user-session gsettings set org.cinnamon panels-show-delay
 #  ['1:0', '2:0', '3:0']
 #
-#/org/cinnamon/panel-zone-icon-sizes
+#run-in-user-session gsettings set org.cinnamon panels-zone-icon-sizes
 #  '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3}]'
-#/org/cinnamon/panel-zone-symbolic-icon-sizes
+#run-in-user-session gsettings set org.cinnamon panels-zone-symbolic-icon-sizes
 #  '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3}]'
-#/org/cinnamon/panel-zone-text-sizes
+#run-in-user-session gsettings set org.cinnamon panels-zone-text-sizes
 #  '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3}]'
 
     # Top left
     
-#    /org/cinnamon/panel-zone-icon-sizes
+#    run-in-user-session gsettings set org.cinnamon panels-zone-icon-sizes
 #  '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4}]'
-#    /org/cinnamon/panel-zone-symbolic-icon-sizes
+#    run-in-user-session gsettings set org.cinnamon panels-zone-symbolic-icon-sizes
 #      '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3},{"left":28,"center":28,"right":28,"panelId":4}]'
-#    /org/cinnamon/panel-zone-text-sizes
+#    run-in-user-session gsettings set org.cinnamon panels-zone-text-sizes
 #      '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4}]'
-#    /org/cinnamon/panels-enabled
+#    run-in-user-session gsettings set org.cinnamon panels-enabled
 #      ['1:0:bottom', '2:5:bottom', '3:4:bottom', '4:1:bottom']
-#    /org/cinnamon/panels-height
+#    run-in-user-session gsettings set org.cinnamon panels-height
 #      ['1:40', '2:40', '3:40', '4:40']
-#    /org/cinnamon/panels-hide-delay
+#    run-in-user-session gsettings set org.cinnamon panels-hide-delay
 #      ['1:0', '2:0', '3:0', '4:0']
-#    /org/cinnamon/panels-show-delay
+#    run-in-user-session gsettings set org.cinnamon panels-show-delay
 #      ['1:0', '2:0', '3:0', '4:0']
 
     # Top middle
     
     
-#    /org/cinnamon/panel-zone-icon-sizes
+#    run-in-user-session gsettings set org.cinnamon panels-zone-icon-sizes
 #      '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5}]'
-#    /org/cinnamon/panel-zone-symbolic-icon-sizes
+#    run-in-user-session gsettings set org.cinnamon panels-zone-symbolic-icon-sizes
 #      '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3},{"left":28,"center":28,"right":28,"panelId":4},{"left":28,"center":28,"right":28,"panelId":5}]'
-#    /org/cinnamon/panel-zone-text-sizes
+#    run-in-user-session gsettings set org.cinnamon panels-zone-text-sizes
 #      '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5}]'
-#    /org/cinnamon/panels-enabled
+#    run-in-user-session gsettings set org.cinnamon panels-enabled
 #      ['1:0:bottom', '2:5:bottom', '3:4:bottom', '4:1:bottom', '5:3:bottom']
-#    /org/cinnamon/panels-height
+#    run-in-user-session gsettings set org.cinnamon panels-height
 #      ['1:40', '2:40', '3:40', '4:40', '5:40']
-#    /org/cinnamon/panels-hide-delay
+#    run-in-user-session gsettings set org.cinnamon panels-hide-delay
 #      ['1:0', '2:0', '3:0', '4:0', '5:0']
-#    /org/cinnamon/panels-show-delay
+#    run-in-user-session gsettings set org.cinnamon panels-show-delay
 #      ['1:0', '2:0', '3:0', '4:0', '5:0']
 
     # Top right
     
-#    /org/cinnamon/panel-zone-icon-sizes
+#    run-in-user-session gsettings set org.cinnamon panels-zone-icon-sizes
 #  '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5},{"left":0,"center":0,"right":0,"panelId":6}]'
-#/org/cinnamon/panel-zone-symbolic-icon-sizes
+#run-in-user-session gsettings set org.cinnamon panels-zone-symbolic-icon-sizes
 #  '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3},{"left":28,"center":28,"right":28,"panelId":4},{"left":28,"center":28,"right":28,"panelId":5},{"left":28,"center":28,"right":28,"panelId":6}]'
-#/org/cinnamon/panel-zone-text-sizes
+#run-in-user-session gsettings set org.cinnamon panels-zone-text-sizes
 #  '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5},{"left":0,"center":0,"right":0,"panelId":6}]'
-#/org/cinnamon/panels-enabled
+#run-in-user-session gsettings set org.cinnamon panels-enabled
 #  ['1:0:bottom', '2:5:bottom', '3:4:bottom', '4:1:bottom', '5:3:bottom', '6:2:bottom']
-#/org/cinnamon/panels-height
+#run-in-user-session gsettings set org.cinnamon panels-height
 #  ['1:40', '2:40', '3:40', '4:40', '5:40', '6:40']
-#/org/cinnamon/panels-hide-delay
+#run-in-user-session gsettings set org.cinnamon panels-hide-delay
 #  ['1:0', '2:0', '3:0', '4:0', '5:0', '6:0']
-#/org/cinnamon/panels-show-delay
+#run-in-user-session gsettings set org.cinnamon panels-show-delay
 #  ['1:0', '2:0', '3:0', '4:0', '5:0', '6:0']
+
+
+    # It looks like as more panels were added, they just kept adding on to the setting that was getting set. 
+    #       these are the final settings values. See if they add all panels. If so, clear out the commented stuff above, as it was just lead-up to this
+    
+    run-in-user-session gsettings set org.cinnamon panel-zone-icon-sizes '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5},{"left":0,"center":0,"right":0,"panelId":6}]'
+
+    run-in-user-session gsettings set org.cinnamon panel-zone-symbolic-icon-sizes '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3},{"left":28,"center":28,"right":28,"panelId":4},{"left":28,"center":28,"right":28,"panelId":5},{"left":28,"center":28,"right":28,"panelId":6}]'
+
+    run-in-user-session gsettings set org.cinnamon panel-zone-text-sizes '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5},{"left":0,"center":0,"right":0,"panelId":6}]'
+
+    run-in-user-session gsettings set org.cinnamon panels-enabled "['1:0:bottom', '2:5:bottom', '3:4:bottom', '4:1:bottom', '5:3:bottom', '6:2:bottom']"
+
+    run-in-user-session gsettings set org.cinnamon panels-height "['1:40', '2:40', '3:40', '4:40', '5:40', '6:40']"
+
+    run-in-user-session gsettings set org.cinnamon panels-hide-delay "['1:0', '2:0', '3:0', '4:0', '5:0', '6:0']"
+
+    run-in-user-session gsettings set org.cinnamon panels-show-delay "['1:0', '2:0', '3:0', '4:0', '5:0', '6:0']"
 
     # Set autohide false on all panels
 
-    # /org/cinnamon/panels-autohide  ['1:false', '2:false', '3:false', '4:false', '5:intel', '6:false']    
+    # run-in-user-session gsettings set org.cinnamon panelss-autohide  ['1:false', '2:false', '3:false', '4:false', '5:intel', '6:false']    
     run-in-user-session gsettings set org.cinnamon panels-autohide "['1:false', '2:false', '3:false', '4:false', '5:false', '6:false']"
 
 
@@ -518,7 +540,7 @@ echo "### Adding non-grouped window list to main panel ###" ####################
 
 # echo "### Removing grouped window list from main panel ###" ######################################################################
 
-#/org/cinnamon/panel-edit-mode
+#run-in-user-session gsettings set org.cinnamon panels-edit-mode
 #  true
 
 #/org/cinnamon/enabled-applets
@@ -537,7 +559,7 @@ echo "### Adding non-grouped window list to main panel ###" ####################
 
 echo "### Turning off panel edit mode now that panels are done needing to be edited ###" ######################################################################
 
-#/org/cinnamon/panel-edit-mode
+#run-in-user-session gsettings set org.cinnamon panels-edit-mode
 #  false
 
 
