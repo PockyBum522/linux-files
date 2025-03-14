@@ -146,6 +146,7 @@ run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power but
 run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power critical-battery-action 'shutdown'
 
 
+
 run-in-user-session gsettings set org.x.apps.favorites list "['computer:///::inode/directory', 'file:///home/david::inode/directory', 'file:///media/secondary::inode/directory', 'file:///media/secondary/Dropbox::inode/directory', 'file:///media/secondary/repos::inode/directory']"
 
 
@@ -405,6 +406,104 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-ac 1200
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-battery-timeout 120
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 60
+    
+    echo "### Adding panels to other monitors ###" ##############################################################################
+    # run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-ac 1800
+    
+    # Bottom left
+    
+#
+#    /org/cinnamon/panel-zone-icon-sizes
+#      '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2}]'
+#    /org/cinnamon/panel-zone-symbolic-icon-sizes
+#      '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2}]'
+#    /org/cinnamon/panel-zone-text-sizes
+#      '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2}]'
+#    /org/cinnamon/panels-enabled
+#      ['1:0:bottom', '2:5:bottom']
+#    /org/cinnamon/panels-height
+#      ['1:40', '2:40']
+#    /org/cinnamon/panels-hide-delay
+#      ['1:0', '2:0']
+#    /org/cinnamon/panels-show-delay
+#      ['1:0', '2:0']
+
+    # Bottom right
+
+#/org/cinnamon/panels-enabled
+#  ['1:0:bottom', '2:5:bottom', '3:4:bottom']
+#/org/cinnamon/panels-height
+#  ['1:40', '2:40', '3:40']
+#/org/cinnamon/panels-hide-delay
+#  ['1:0', '2:0', '3:0']
+#/org/cinnamon/panels-show-delay
+#  ['1:0', '2:0', '3:0']
+#
+#/org/cinnamon/panel-zone-icon-sizes
+#  '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3}]'
+#/org/cinnamon/panel-zone-symbolic-icon-sizes
+#  '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3}]'
+#/org/cinnamon/panel-zone-text-sizes
+#  '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3}]'
+
+    # Top left
+    
+#    /org/cinnamon/panel-zone-icon-sizes
+#  '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4}]'
+#    /org/cinnamon/panel-zone-symbolic-icon-sizes
+#      '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3},{"left":28,"center":28,"right":28,"panelId":4}]'
+#    /org/cinnamon/panel-zone-text-sizes
+#      '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4}]'
+#    /org/cinnamon/panels-enabled
+#      ['1:0:bottom', '2:5:bottom', '3:4:bottom', '4:1:bottom']
+#    /org/cinnamon/panels-height
+#      ['1:40', '2:40', '3:40', '4:40']
+#    /org/cinnamon/panels-hide-delay
+#      ['1:0', '2:0', '3:0', '4:0']
+#    /org/cinnamon/panels-show-delay
+#      ['1:0', '2:0', '3:0', '4:0']
+
+    # Top middle
+    
+    
+#    /org/cinnamon/panel-zone-icon-sizes
+#      '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5}]'
+#    /org/cinnamon/panel-zone-symbolic-icon-sizes
+#      '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3},{"left":28,"center":28,"right":28,"panelId":4},{"left":28,"center":28,"right":28,"panelId":5}]'
+#    /org/cinnamon/panel-zone-text-sizes
+#      '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5}]'
+#    /org/cinnamon/panels-enabled
+#      ['1:0:bottom', '2:5:bottom', '3:4:bottom', '4:1:bottom', '5:3:bottom']
+#    /org/cinnamon/panels-height
+#      ['1:40', '2:40', '3:40', '4:40', '5:40']
+#    /org/cinnamon/panels-hide-delay
+#      ['1:0', '2:0', '3:0', '4:0', '5:0']
+#    /org/cinnamon/panels-show-delay
+#      ['1:0', '2:0', '3:0', '4:0', '5:0']
+
+    # Top right
+    
+#    /org/cinnamon/panel-zone-icon-sizes
+#  '[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5},{"left":0,"center":0,"right":0,"panelId":6}]'
+#/org/cinnamon/panel-zone-symbolic-icon-sizes
+#  '[{"panelId":1,"left":28,"center":28,"right":16},{"left":28,"center":28,"right":28,"panelId":2},{"left":28,"center":28,"right":28,"panelId":3},{"left":28,"center":28,"right":28,"panelId":4},{"left":28,"center":28,"right":28,"panelId":5},{"left":28,"center":28,"right":28,"panelId":6}]'
+#/org/cinnamon/panel-zone-text-sizes
+#  '[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3},{"left":0,"center":0,"right":0,"panelId":4},{"left":0,"center":0,"right":0,"panelId":5},{"left":0,"center":0,"right":0,"panelId":6}]'
+#/org/cinnamon/panels-enabled
+#  ['1:0:bottom', '2:5:bottom', '3:4:bottom', '4:1:bottom', '5:3:bottom', '6:2:bottom']
+#/org/cinnamon/panels-height
+#  ['1:40', '2:40', '3:40', '4:40', '5:40', '6:40']
+#/org/cinnamon/panels-hide-delay
+#  ['1:0', '2:0', '3:0', '4:0', '5:0', '6:0']
+#/org/cinnamon/panels-show-delay
+#  ['1:0', '2:0', '3:0', '4:0', '5:0', '6:0']
+
+    # Set autohide false on all panels
+
+    # /org/cinnamon/panels-autohide  ['1:false', '2:false', '3:false', '4:false', '5:intel', '6:false']    
+    run-in-user-session gsettings set org.cinnamon panels-autohide "['1:false', '2:false', '3:false', '4:false', '5:false', '6:false']"
+
+
 fi
 
 
