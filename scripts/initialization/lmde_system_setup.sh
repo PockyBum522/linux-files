@@ -25,6 +25,8 @@ read -n 1 -r -s -p $'AGAIN, I AM ASKING YOU: HAVE YOU READ THE WARNING AT THE TO
 
 # TODO: Check if secondary drive is available, and set up automatic mounting at /media/secondary if it is
 
+# TODO: See if there's anything better for my needs than flameshot
+
 
 set -e
 set -o pipefail
@@ -141,83 +143,6 @@ run-in-user-session gsettings set org.nemo.preferences show-hidden-files true
 run-in-user-session gsettings set org.nemo.window-state sidebar-width 290
 
 
-echo "### Setting firefox keyboard shortcut ###" ##############################################################################
-run-in-user-session gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__']"
-run-in-user-session gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__', 'custom0']"
-run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Alt>f']"
-run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'firefox'"
-run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Firefox'"
-
-
-echo "### Setting firefox keyboard shortcut ###" ##############################################################################
-
-# Make custom shortcuts for firefox, beeper, github desktop
-
-/org/cinnamon/desktop/keybindings/custom-list
-  ['custom1', 'custom0']
-
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding
-  @as []
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command
-  '/home/david/.local/share/beeper/Beeper-Cloud.appimage'
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name
-  'BeeperPath'
-
-/org/cinnamon/desktop/keybindings/custom-list
-  ['custom1', 'custom0', 'custom2', '__dummy__']
-
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom2/binding
-  @as []
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom2/command
-  'firefox'
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom2/name
-  'Firefox'
-
-/org/cinnamon/desktop/keybindings/custom-list
-  ['custom1', 'custom0', 'custom2', 'custom3']
-
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom3/binding
-  @as []
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom3/command
-  'github-desktop'
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom3/name
-  'Github Desktop'
-
-    # Add key shortcuts to them all:
-    
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding
-  ['<Alt>t']
-/org/cinnamon/desktop/keybindings/custom-list
-  ['custom1', 'custom0', 'custom2', 'custom3', '__dummy__']
-
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom2/binding
-  ['<Alt>f']
-/org/cinnamon/desktop/keybindings/custom-list
-  ['custom1', 'custom0', 'custom2', 'custom3']
-
-/org/cinnamon/desktop/keybindings/custom-keybindings/custom3/binding
-  ['<Alt>2']
-/org/cinnamon/desktop/keybindings/custom-list
-  ['custom1', 'custom0', 'custom2', 'custom3', '__dummy__']
-
-/org/cinnamon/desktop/keybindings/media-keys/terminal
-  ['<Primary><Alt>t', '<Alt>1']
-
-
-#run-in-user-session gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__']"
-#run-in-user-session gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__', 'custom1']"
-#run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Alt>t']"
-#run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'beeper'"
-#run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Beeper'"
-#
-#
-#gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__']"
-#gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__', 'custom1']"
-#dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Alt>t']"
-#dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'beeper'"
-#dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Beeper'"
-
-
 echo "### Setting power settings ###" ##############################################################################
 run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-ac 1800
 run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power lid-close-ac-action 'suspend'
@@ -284,6 +209,49 @@ apt install -y krita
 apt install -y chromium
 apt install -y usrmerge
 apt install -y spotify-client
+apt install -y xbindkeys
+
+
+echo "### Setting up keyboard shortcuts ###" ##############################################################################
+# Make custom shortcuts for firefox, beeper, github desktop
+
+# Make default file
+xbindkeys --defaults > "$USER_HOME/.xbindkeysrc"
+
+chown david "$USER_HOME/.xbindkeysrc"
+chgrp david "$USER_HOME/.xbindkeysrc"
+     
+# To kill it if it is running
+killall -s1 xbindkeys
+     
+# The xbindkeys format is easy, first line is the command and second line is the shortkey.
+# To discover the shortkey, use: $ xbindkeys -k and press the keys.
+
+
+    cat >> "$USER_HOME/.xbindkeysrc"<<EOF 
+# Alt + f for Firefox
+
+"firefox"
+    m:0x18 + c:41
+
+
+# Alt + 2 for github desktop
+
+"github-desktop"
+    m:0x18 + c:11
+
+
+# Alt + t for beeper
+
+"/home/david/.local/share/beeper/Beeper-Cloud.appimage"
+    m:0x18 + c:28
+
+
+EOF
+
+
+# To start xbindkeys
+xbindkeys -f "$USER_HOME/.xbindkeysrc"
 
 
 # Github desktop package feed add
@@ -302,6 +270,7 @@ flatpak install -y org.fkoehler.KTailctl
 flatpak install -y com.yubico.yubioath
 flatpak install -y org.remmina.Remmina
 flatpak install -y com.bitwarden.desktop
+flatpak install -y com.discordapp.Discord
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
