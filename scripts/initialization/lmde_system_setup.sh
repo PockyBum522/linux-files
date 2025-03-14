@@ -6,6 +6,13 @@
 # TODO: Alt + 2 for github-desktop
 # TODO: Alt + T for beeper
 
+# TODO: Numlock enabled on startup
+
+# TODO: Integrate running right click nemo icons script as user
+
+# TODO: Check if secondary drive is available, and set up automatic mounting at /media/secondary if it is
+
+
 set -e
 set -o pipefail
 
@@ -59,6 +66,17 @@ run-in-user-session gsettings set org.x.editor.preferences.editor bracket-matchi
 run-in-user-session gsettings set org.x.editor.preferences.editor highlight-current-line true
 run-in-user-session gsettings set org.x.editor.preferences.editor auto-indent true
 run-in-user-session gsettings set org.x.editor.plugins active-plugins "['sort', 'filebrowser', 'docinfo', 'joinlines', 'spell', 'textsize', 'open-uri-context-menu', 'modelines', 'time']"
+
+
+echo "### Setting desktop icon settings ###" ##############################################################################
+
+run-in-user-session gsettings set org.x.editor.preferences.editor auto-indent true
+
+#/org/nemo/desktop/desktop-layout  'true::true'
+run-in-user-session gsettings set org.nemo.desktop desktop-layout true
+
+#/org/nemo/desktop/volumes-visible false
+run-in-user-session gsettings set org.nemo.desktop volumes-visible false
 
 
 echo "### Setting update manager to hide icon unless updates are available ###" ##############################################################################
@@ -162,7 +180,6 @@ apt install -y htop
 apt install -y mint-meta-codecs
 apt install -y feh
 apt install -y xdotool
-apt install -y github-desktop
 apt install -y barrier
 apt install -y gparted
 apt install -y k4dirstat
@@ -172,12 +189,30 @@ apt install -y evtest
 apt install -y filezilla
 apt install -y mosquitto-clients
 apt install -y haskell-stack                    # for kmonad
+apt install -y mgba-qt
+apt install -y seafile-gui
+apt install -y krita
+apt install -y chromium
+apt install -y usrmerge
+apt install -y spotify-client
+
+
+# Github desktop package feed add
+wget -qO - https://mirror.mwt.me/shiftkey-desktop/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/mwt-desktop.gpg > /dev/null
+sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mwt-desktop.gpg] https://mirror.mwt.me/shiftkey-desktop/deb/ any main" > /etc/apt/sources.list.d/mwt-desktop.list'
+
+# Now install github desktop
+apt update
+apt-get -y upgrade
+apt-get -y dist-upgrade
+apt install github-desktop
 
 
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
 flatpak install -y org.fkoehler.KTailctl
 flatpak install -y com.yubico.yubioath
 flatpak install -y org.remmina.Remmina
+flatpak install -y com.bitwarden.desktop
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
@@ -306,6 +341,8 @@ cd kmonad
 stack install
 
 
+
+
 echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
 TMP_DIR="/tmp"
 INSTALL_DIR="$USER_HOME/.local/share/jetbrains/toolbox/bin"
@@ -339,7 +376,16 @@ else
 	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
 fi
 
-sudo chown david "$USER_HOME/.local/share"
+# USER_HOME="/home/david"
+chown david "$USER_HOME/.local/share"
+chown david -R "$USER_HOME/.local/share/beeper"
+chown david -R "$USER_HOME/.local/share/jetbrains"
+chown david -R "$USER_HOME/.local/share/kmonad"
+
+chgrp david "$USER_HOME/.local/share"
+chgrp david -R "$USER_HOME/.local/share/beeper"
+chgrp david -R "$USER_HOME/.local/share/jetbrains"
+chgrp david -R "$USER_HOME/.local/share/kmonad"
 
 
 echo "### Adding $USER_HOME/.local/bin to PATH ###" ######################################################################
@@ -360,5 +406,43 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-battery-timeout 120
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 60
 fi
+
+
+echo "### Adding non-grouped window list to main panel ###" ######################################################################
+
+#/org/cinnamon/next-applet-id
+#  16
+#
+#/org/cinnamon/enabled-applets
+#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:grouped-window-list@cinnamon.org:2', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:window-list@cinnamon.org:15']
+
+
+# echo "### Removing grouped window list from main panel ###" ######################################################################
+
+#/org/cinnamon/panel-edit-mode
+#  true
+
+#/org/cinnamon/enabled-applets
+#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:window-list@cinnamon.org:15']
+
+
+# echo "### Moving new non-grouped window list to left side of panel ###" ######################################################################
+
+#/org/cinnamon/enabled-applets
+#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:left:2:window-list@cinnamon.org:15']
+
+
+
+
+
+
+echo "### Turning off panel edit mode now that panels are done needing to be edited ###" ######################################################################
+
+#/org/cinnamon/panel-edit-mode
+#  false
+
+
+
+
 
 echo "### Finished installing/configuring everything! ###"  ###########################################################################
