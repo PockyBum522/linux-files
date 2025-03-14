@@ -1,0 +1,66 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:GsettingsDconfWatchConverter.ViewModels"
+        xmlns:viewUtilities="clr-namespace:GsettingsDconfWatchConverter.Views.ViewUtilities"
+        mc:Ignorable="d" 
+        x:Class="GsettingsDconfWatchConverter.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RUN DNC"
+        d:DesignWidth="600" d:DesignHeight="800"
+        Width="600" 
+        Height="800"
+        Background="Black"
+        x:DataType="viewModels:MainViewModel" >
+    
+        <Window.Styles>
+            <Style Selector="TextBlock">
+                <Setter Property="Foreground" Value="#E1E1E1"/>
+            </Style>
+            
+            <Style Selector="TextBox">
+                <Setter Property="FontSize" Value="9"/>
+            </Style>
+
+            <Style Selector="Button">
+                <Setter Property="Background" Value="#5A5A5A"/>
+            </Style>
+            
+            <Style Selector="TextBox, ComboBox, Button, RadioButton">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Background" Value="#424242"/>
+                <Setter Property="Foreground" Value="#E1E1E1"/>
+            </Style>
+
+        </Window.Styles>
+        
+        <Design.DataContext>
+            <!-- This only sets the DataContext for the previewer in an IDE, to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+            <viewModels:MainViewModel />
+        </Design.DataContext>
+
+        <Grid RowDefinitions="*, 90, *" ColumnDefinitions="*">
+            
+            <!-- Text box to paste raw dconf watch strings into -->
+            <DockPanel Grid.Row="0" Margin="5">
+                <TextBlock Text="Raw Dconf Watch Output:" Margin="0,0,0,15" DockPanel.Dock="Top"/>
+                <TextBox Text="{Binding RawDconfText}" AcceptsReturn="True" Margin="0,0,0,5" />
+            </DockPanel>
+            
+            <!-- Convert to scriptable button -->
+            <Button Grid.Row="1" Content="Convert to Scriptable" 
+                    Command="{Binding convertDconfOutputToScriptableCommand}" 
+                    HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    MinWidth="400" MinHeight="80"
+                    Margin="10, 20, 10, 10" />
+            
+            <!-- Text box to show converted output -->
+            <DockPanel Grid.Row="2" Margin="5">
+                <TextBlock Text="Converted:" Margin="0,0,0,15" DockPanel.Dock="Top"/>
+                <TextBox Text="{Binding ConvertedOutputText}" AcceptsReturn="True" Margin="0,0,0,5" />
+            </DockPanel>
+            
+        </Grid>
+</Window>

@@ -20,10 +20,6 @@ read -n 1 -r -s -p $'AGAIN, I AM ASKING YOU: HAVE YOU READ THE WARNING AT THE TO
 # TODO: https://github.com/AdnanHodzic/displaylink-debian
 
 # TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
-# TODO: Alt + 2 for github-desktop
-# TODO: Alt + T for beeper
-
-# TODO: Numlock enabled on startup
 
 # TODO: Integrate running right click nemo icons script as user
 
@@ -138,6 +134,12 @@ run-in-user-session gsettings set org.nemo.preferences show-location-entry true
 run-in-user-session gsettings set org.nemo.list-view default-column-order "['name', 'size', 'type', 'date_modified', 'date_created_with_time', 'date_accessed', 'date_created', 'detailed_type', 'group', 'where', 'mime_type', 'date_modified_with_time', 'octal_permissions', 'owner', 'permissions']"
 run-in-user-session gsettings set org.nemo.list-view default-visible-columns "['name', 'size', 'type', 'date_modified', 'date_created', 'owner']"
 
+# /org/nemo/preferences/show-hidden-files  true
+run-in-user-session gsettings set org.nemo.preferences show-hidden-files true
+
+# /org/nemo/window-state/sidebar-width  281
+run-in-user-session gsettings set org.nemo.window-state sidebar-width 290
+
 
 echo "### Setting firefox keyboard shortcut ###" ##############################################################################
 run-in-user-session gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__']"
@@ -145,6 +147,75 @@ run-in-user-session gsettings set org.cinnamon.desktop.keybindings custom-list "
 run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Alt>f']"
 run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'firefox'"
 run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Firefox'"
+
+
+echo "### Setting firefox keyboard shortcut ###" ##############################################################################
+
+# Make custom shortcuts for firefox, beeper, github desktop
+
+/org/cinnamon/desktop/keybindings/custom-list
+  ['custom1', 'custom0']
+
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding
+  @as []
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command
+  '/home/david/.local/share/beeper/Beeper-Cloud.appimage'
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name
+  'BeeperPath'
+
+/org/cinnamon/desktop/keybindings/custom-list
+  ['custom1', 'custom0', 'custom2', '__dummy__']
+
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom2/binding
+  @as []
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom2/command
+  'firefox'
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom2/name
+  'Firefox'
+
+/org/cinnamon/desktop/keybindings/custom-list
+  ['custom1', 'custom0', 'custom2', 'custom3']
+
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom3/binding
+  @as []
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom3/command
+  'github-desktop'
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom3/name
+  'Github Desktop'
+
+    # Add key shortcuts to them all:
+    
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding
+  ['<Alt>t']
+/org/cinnamon/desktop/keybindings/custom-list
+  ['custom1', 'custom0', 'custom2', 'custom3', '__dummy__']
+
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom2/binding
+  ['<Alt>f']
+/org/cinnamon/desktop/keybindings/custom-list
+  ['custom1', 'custom0', 'custom2', 'custom3']
+
+/org/cinnamon/desktop/keybindings/custom-keybindings/custom3/binding
+  ['<Alt>2']
+/org/cinnamon/desktop/keybindings/custom-list
+  ['custom1', 'custom0', 'custom2', 'custom3', '__dummy__']
+
+/org/cinnamon/desktop/keybindings/media-keys/terminal
+  ['<Primary><Alt>t', '<Alt>1']
+
+
+#run-in-user-session gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__']"
+#run-in-user-session gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__', 'custom1']"
+#run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Alt>t']"
+#run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'beeper'"
+#run-in-user-session dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Beeper'"
+#
+#
+#gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__']"
+#gsettings set org.cinnamon.desktop.keybindings custom-list "['__dummy__', 'custom1']"
+#dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Alt>t']"
+#dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'beeper'"
+#dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Beeper'"
 
 
 echo "### Setting power settings ###" ##############################################################################
@@ -362,8 +433,13 @@ stack install
 
 
 echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
+
+# make folders it will need later
+mkdir -p "$USER_HOME/.local/share/JetBrains/Toolbox/apps"
+mkdir -p "$USER_HOME/.local/share/JetBrains/Toolbox/scripts"
+
 TMP_DIR="/tmp"
-INSTALL_DIR="$USER_HOME/.local/share/jetbrains/toolbox/bin"
+INSTALL_DIR="$USER_HOME/.local/share/JetBrains/Toolbox/InstallerBin"
 SYMLINK_DIR="$USER_HOME/.local/bin"
 
 echo -e "\e[94mFetching the URL of the latest version...\e[39m"
@@ -394,17 +470,20 @@ else
 	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
 fi
 
+
 # USER_HOME="/home/david"
 chown david "$USER_HOME/.local/share"
 chown david -R "$USER_HOME/.local/share/beeper"
-chown david -R "$USER_HOME/.local/share/jetbrains"
+chown david -R "$USER_HOME/.local/share/JetBrains"
 chown david -R "$USER_HOME/.local/share/kmonad"
 
 chgrp david "$USER_HOME/.local/share"
 chgrp david -R "$USER_HOME/.local/share/beeper"
-chgrp david -R "$USER_HOME/.local/share/jetbrains"
+chgrp david -R "$USER_HOME/.local/share/JetBrains"
 chgrp david -R "$USER_HOME/.local/share/kmonad"
 
+# Now run the thing
+./"$INSTALL_DIR/jetbrains-toolbox"
 
 echo "### Adding $USER_HOME/.local/bin to PATH ###" ######################################################################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
@@ -577,7 +656,19 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
 
 fi
 
+echo "### Setting xed as default file opener for correct filetypes. Apparently .sln counts as text/plain. That is stupid ###" ################################################################
+    cat >> "$USER_HOME/.config/mimeapps.list"<<EOF 
+Default Applications]
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+text/plain=org.x.editor.desktop
+text/markdown=org.x.editor.desktop
 
+[Added Associations]
+text/plain=org.x.editor.desktop;
+text/markdown=org.x.editor.desktop;
+
+EOF
+fi
 
 
 echo "### Finished installing/configuring everything! ###"  ###########################################################################
