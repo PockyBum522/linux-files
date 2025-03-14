@@ -1,5 +1,22 @@
 #! /bin/bash
 
+# Before running this on DAVID-DESKTOP, or anything with a finnicky NVIDIA card, do the following:
+
+# Fresh install, and then don't do anything else before doing the below steps:
+
+#       1. Install Nvidia driver from Nvidia site
+#       2. Install arandr
+#       3. Configure screens per picture on phone in arandr
+#       4. Go into display settings, change some small things, click okay, change that thing back, click okay (this is because arandr will set up screen position right but it won't persist after reboot)
+
+# After those, then you can run this script.
+
+
+read -n 1 -r -s -p $'HAVE YOU READ THE WARNING AT THE TOP OF THE SCRIPT? IF YOU ARE RUNNING THIS ON A COMPUTER WITH A FINNICKY NVIDIA CARD, LOOK AT THE WARNING AND DO WHAT IT SAYS BEFORE RUNNING THIS\n'
+
+read -n 1 -r -s -p $'AGAIN, I AM ASKING YOU: HAVE YOU READ THE WARNING AT THE TOP OF THE SCRIPT? IF YOU ARE RUNNING THIS ON A COMPUTER WITH A FINNICKY NVIDIA CARD, LOOK AT THE WARNING AND DO WHAT IT SAYS BEFORE RUNNING THIS. YOU CAN JUST CLOSE THIS SCRIPT OR CTRL + C IF YOU ARE NOT READY\n'
+
+
 # TODO: https://github.com/AdnanHodzic/displaylink-debian
 
 # TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
@@ -393,6 +410,37 @@ echo "### Adding $USER_HOME/.local/bin to PATH ###" ############################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
 
 
+echo "### Adding non-grouped window list to main panel ###" ######################################################################
+
+
+#/org/cinnamon/next-applet-id
+#  16
+#
+#/org/cinnamon/enabled-applets
+#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:grouped-window-list@cinnamon.org:2', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:window-list@cinnamon.org:15']
+
+
+# echo "### Removing grouped window list from main panel ###" ######################################################################
+
+#run-in-user-session gsettings set org.cinnamon panels-edit-mode
+#  true
+
+#/org/cinnamon/enabled-applets
+#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:window-list@cinnamon.org:15']
+
+
+# echo "### Moving new non-grouped window list to left side of panel ###" ######################################################################
+
+#/org/cinnamon/enabled-applets
+#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:left:2:window-list@cinnamon.org:15']
+
+
+echo "### Turning off panel edit mode now that panels are done needing to be edited ###" ######################################################################
+
+#run-in-user-session gsettings set org.cinnamon panels-edit-mode
+#  false
+
+
 if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
 
     # Set DPI fractional scaling on
@@ -406,6 +454,7 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-ac 1200
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-inactive-battery-timeout 120
     run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-battery 60
+    
     
     echo "### Adding panels to other monitors ###" ##############################################################################
     # run-in-user-session gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-ac 1800
@@ -527,41 +576,6 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
 
 
 fi
-
-
-echo "### Adding non-grouped window list to main panel ###" ######################################################################
-
-#/org/cinnamon/next-applet-id
-#  16
-#
-#/org/cinnamon/enabled-applets
-#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:grouped-window-list@cinnamon.org:2', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:window-list@cinnamon.org:15']
-
-
-# echo "### Removing grouped window list from main panel ###" ######################################################################
-
-#run-in-user-session gsettings set org.cinnamon panels-edit-mode
-#  true
-
-#/org/cinnamon/enabled-applets
-#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:window-list@cinnamon.org:15']
-
-
-# echo "### Moving new non-grouped window list to left side of panel ###" ######################################################################
-
-#/org/cinnamon/enabled-applets
-#  ['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:left:2:window-list@cinnamon.org:15']
-
-
-
-
-
-
-echo "### Turning off panel edit mode now that panels are done needing to be edited ###" ######################################################################
-
-#run-in-user-session gsettings set org.cinnamon panels-edit-mode
-#  false
-
 
 
 
