@@ -94,7 +94,7 @@ public partial class MainViewModel : ObservableObject
         ConvertedOutputText = "# RUN IN USER SESSION LINES:" + Environment.NewLine; 
         ConvertedOutputText += Environment.NewLine; 
         
-        ConvertedOutputText += string.Join(Environment.NewLine + Environment.NewLine, prefixedRunInSessionLines);
+        ConvertedOutputText += string.Join(Environment.NewLine, prefixedRunInSessionLines);
         
         ConvertedOutputText += Environment.NewLine; 
         ConvertedOutputText += Environment.NewLine; 
@@ -102,7 +102,7 @@ public partial class MainViewModel : ObservableObject
         ConvertedOutputText += "# RUN NORMALLY LINES:" + Environment.NewLine; 
         ConvertedOutputText += Environment.NewLine; 
         
-        ConvertedOutputText += string.Join(Environment.NewLine + Environment.NewLine, prefixedLines);
+        ConvertedOutputText += string.Join(Environment.NewLine, prefixedLines);
         ConvertedOutputText += Environment.NewLine;
 
         _logger?.Information("[END]");
