@@ -272,6 +272,7 @@ flatpak install -y com.yubico.yubioath
 flatpak install -y org.remmina.Remmina
 flatpak install -y com.bitwarden.desktop
 flatpak install -y com.discordapp.Discord
+flatpak install -y md.obsidian.Obsidian
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
@@ -351,6 +352,16 @@ X-GNOME-Autostart-enabled=false
 
 EOF
 fi
+
+
+
+curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+
+curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+
+apt-get update
+
+apt-get install tailscale -y
 
 
 echo "### Setting ktailscale to run at startup ###" ################################################################
@@ -614,18 +625,26 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     fi
 
     echo "### Setting xed as default file opener for correct filetypes. Apparently .sln counts as text/plain. That is stupid ###" ################################################################
-        cat >> "$USER_HOME/.config/mimeapps.list"<<EOF 
-    Default Applications]
-    x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
-    text/plain=org.x.editor.desktop
-    text/markdown=org.x.editor.desktop
 
-    [Added Associations]
-    text/plain=org.x.editor.desktop;
-    text/markdown=org.x.editor.desktop;
+    cat >> "$USER_HOME/.config/mimeapps.list" << EOF 
+[Default Applications]
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+text/plain=org.x.editor.desktop
+text/markdown=org.x.editor.desktop
 
-    EOF
-fi
+[Added Associations]
+text/plain=org.x.editor.desktop;
+text/markdown=org.x.editor.desktop;
 
+EOF
 
 echo "### Finished installing/configuring everything! ###"  ###########################################################################
+
+# Now that we're done, show the QR to log in to tailscale
+
+tailscale login --advertise-exit-node --qr # --hostname=OVERRIDE-HOSTNAME-HERE
+
+tailscale up --advertise-exit-node -ssh # --hostname=OVERRIDE-HOSTNAME-HERE
+
+
+
