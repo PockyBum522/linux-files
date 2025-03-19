@@ -209,6 +209,7 @@ apt install -y krita
 apt install -y chromium
 apt install -y usrmerge
 apt install -y spotify-client
+apt install -y flameshot
 apt install -y xbindkeys
 
 
