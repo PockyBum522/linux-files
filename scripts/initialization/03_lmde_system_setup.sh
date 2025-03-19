@@ -88,7 +88,7 @@ echo "### Setting desktop icon settings ###" ###################################
 run-in-user-session gsettings set org.x.editor.preferences.editor auto-indent true
 
 #/org/nemo/desktop/desktop-layout  'true::true'
-run-in-user-session gsettings set org.nemo.desktop desktop-layout true
+run-in-user-session gsettings set org.nemo.desktop desktop-layout true::true
 
 #/org/nemo/desktop/volumes-visible false
 run-in-user-session gsettings set org.nemo.desktop volumes-visible false
