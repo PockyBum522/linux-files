@@ -491,11 +491,15 @@ fi
 echo "### Setting up kmonad ###" ##############################################################
 mkdir -p /home/david/.local/share
 cd /home/david/.local/share
-git clone https://github.com/kmonad/kmonad.git
-cd kmonad
-stack install
 
+echo "### Disabling LMDE welcome dialog at startup ###" ################################################################
+if [ ! -d "$USER_HOME/.local/share/kmonad" ]
+then
+    git clone https://github.com/kmonad/kmonad.git
+    cd kmonad
+    stack install
 
+fi
 
 
 echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
@@ -549,7 +553,7 @@ chgrp david -R "$USER_HOME/.local/share/JetBrains"
 chgrp david -R "$USER_HOME/.local/share/kmonad"
 
 # Now run the thing
-./"$INSTALL_DIR/jetbrains-toolbox"
+"$INSTALL_DIR/jetbrains-toolbox"
 
 echo "### Adding $USER_HOME/.local/bin to PATH ###" ######################################################################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
