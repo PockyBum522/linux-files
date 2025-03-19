@@ -211,7 +211,7 @@ apt install -y usrmerge
 apt install -y spotify-client
 apt install -y flameshot
 apt install -y xbindkeys
-
+apt install -y unzip
 
 echo "### Setting up keyboard shortcuts ###" ##############################################################################
 # Make custom shortcuts for firefox, beeper, github desktop
@@ -647,12 +647,25 @@ echo "### Adding $USER_HOME/.local/bin to PATH ###" ############################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
 
 
-echo "### Turning off panel edit mode now that panels are done needing to be edited ###" ######################################################################
+echo "### Adding power icon to next to cinnamon menu ###" ######################################################################
+curl https://cinnamon-spices.linuxmint.com/files/applets/sessionManager@scollins.zip > /tmp/sessionManager@scollins.zip
 
-#run-in-user-session gsettings set org.cinnamon panels-edit-mode
-#  false
+cd /home/david/.local/share/cinnamon/applets/
+
+unzip /tmp/sessionManager@scollins.zip
 
 
+echo "### Adding gtile extension to cinnamon ###" ######################################################################
+curl https://cinnamon-spices.linuxmint.com/files/extensions/gTile@shuairan.zip > /tmp/gTile@shuairan.zip
+
+cd /home/david/.local/share/cinnamon/extensions/
+
+unzip /tmp/gTile@shuairan.zip
+
+run-in-user-session gsettings set org.cinnamon enabled-extensions "['gTile@shuairan']"
+
+
+echo "### About to run machine/hostname specific work ###" ######################################################################
 if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
 
     # Set DPI fractional scaling on
@@ -690,9 +703,10 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
     run-in-user-session gsettings set org.cinnamon panels-autohide "['1:false', '2:false', '3:false', '4:false', '5:false', '6:false']"
 
 
-    echo "### Adding non-grouped window list to all panels ###" ######################################################################
+    echo "### Configuring all panels ###" ######################################################################
 
-    run-in-user-session gsettings set org.cinnamon enabled-applets "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:left:2:window-list@cinnamon.org:15', 'panel2:left:0:window-list@cinnamon.org:17', 'panel4:left:0:window-list@cinnamon.org:18', 'panel5:left:0:window-list@cinnamon.org:19', 'panel6:left:0:window-list@cinnamon.org:20', 'panel3:left:0:window-list@cinnamon.org:21']"
+    run-in-user-session gsettings set org.cinnamon enabled-applets   "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:2:separator@cinnamon.org:1', 'panel1:right:3:systray@cinnamon.org:3', 'panel1:right:4:xapp-status@cinnamon.org:4', 'panel1:right:5:notifications@cinnamon.org:5', 'panel1:right:6:printers@cinnamon.org:6', 'panel1:right:7:removable-drives@cinnamon.org:7', 'panel1:right:8:keyboard@cinnamon.org:8', 'panel1:right:9:favorites@cinnamon.org:9', 'panel1:right:10:network@cinnamon.org:10', 'panel1:right:11:sound@cinnamon.org:11', 'panel1:right:12:power@cinnamon.org:12', 'panel1:right:13:calendar@cinnamon.org:13', 'panel1:right:14:cornerbar@cinnamon.org:14', 'panel2:left:0:window-list@cinnamon.org:17', 'panel4:left:0:window-list@cinnamon.org:18', 'panel5:left:0:window-list@cinnamon.org:19', 'panel6:left:0:window-list@cinnamon.org:20', 'panel3:left:0:window-list@cinnamon.org:21', 'panel1:left:1:sessionManager@scollins:16']"
+
 
     fi
 
