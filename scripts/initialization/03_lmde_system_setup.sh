@@ -422,7 +422,7 @@ curl https://raw.githubusercontent.com/PockyBum522/linux-files/master/configurat
 
 
 echo "### Disabling LMDE welcome dialog at startup ###" ################################################################
-if [ ! -d "$USER_HOME/.config/autostart/mintwelcome.desktop" ]
+if [ ! -f "$USER_HOME/.config/autostart/mintwelcome.desktop" ]
 then
     cat >> "$USER_HOME/.config/autostart/mintwelcome.desktop"<<EOF 
 [Desktop Entry]
@@ -451,7 +451,7 @@ apt-get install tailscale -y
 
 
 echo "### Setting ktailscale to run at startup ###" ################################################################
-if [ ! -d "$USER_HOME/.config/autostart/ktailscale.desktop" ]
+if [ ! -f "$USER_HOME/.config/autostart/ktailscale.desktop" ]
 then
     cat >> "$USER_HOME/.config/autostart/ktailscale.desktop"<<EOF 
 [Desktop Entry]
@@ -470,6 +470,93 @@ Hidden=true
 Name[en_US]=KTailctl
 Comment[en_US]=GUI for tailscale on the KDE Plasma desktop
 X-GNOME-Autostart-Delay=10
+
+EOF
+fi
+
+
+echo "### Setting copyq to run at startup ###" ################################################################
+if [ ! -f "$USER_HOME/.config/autostart/com.github.hluk.copyq.desktop" ]
+then
+    cat >> "$USER_HOME/.config/autostart/com.github.hluk.copyq.desktop"<<EOF 
+[Desktop Entry]
+Name=CopyQ
+Exec=copyq --start-server show
+Icon=copyq
+GenericName=Clipboard Manager
+X-GNOME-Autostart-Delay=1
+Type=Application
+Terminal=false
+X-KDE-autostart-after=panel
+X-KDE-StartupNotify=false
+X-KDE-UniqueApplet=true
+Categories=Qt;KDE;Utility;
+GenericName[en_GB]=Clipboard Tool
+Comment=A cut & paste history utility
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=CopyQ
+Comment[en_US]=A cut & paste history utility
+
+EOF
+fi
+
+
+echo "### Setting flameshot to run at startup ###" ################################################################
+if [ ! -f "$USER_HOME/.config/autostart/org.flameshot.Flameshot.desktop" ]
+then
+    cat >> "$USER_HOME/.config/autostart/org.flameshot.Flameshot.desktop"<<EOF 
+[Desktop Entry]
+Name=Flameshot
+GenericName=Screenshot tool
+Comment=Powerful yet simple to use screenshot software.
+Keywords=flameshot;screenshot;capture;shutter;
+Exec=flameshot
+Icon=org.flameshot.Flameshot
+Terminal=false
+Type=Application
+Categories=Graphics;
+StartupNotify=false
+StartupWMClass=flameshot
+Actions=Configure;Capture;Launcher;
+X-DBUS-StartupType=Unique
+X-DBUS-ServiceName=org.flameshot.Flameshot
+X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot,org.kde.KWin.ScreenShot2
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+X-GNOME-Autostart-Delay=5
+
+[Desktop Action Configure]
+Name=Configure
+Exec=flameshot config
+
+[Desktop Action Capture]
+Name=Take screenshot
+Exec=flameshot gui --delay 500
+
+[Desktop Action Launcher]
+Name=Open launcher
+Exec=flameshot launcher
+
+EOF
+fi
+
+
+echo "### Setting jetbrains toolbox to run at startup ###" ################################################################
+if [ ! -f "$USER_HOME/.config/autostart/JatBrains Toolbox.desktop" ]
+then
+    cat >> "$USER_HOME/.config/autostart/JatBrains Toolbox.desktop"<<EOF 
+[Desktop Entry]
+Type=Application
+Exec=jetbrains-toolbox
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=JatBrains Toolbox
+Comment[en_US]=No description
+X-GNOME-Autostart-Delay=2
 
 EOF
 fi
