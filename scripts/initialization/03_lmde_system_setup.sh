@@ -734,8 +734,26 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
 
     run-in-user-session gsettings set org.cinnamon enabled-applets   "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:2:separator@cinnamon.org:1', 'panel1:right:3:systray@cinnamon.org:3', 'panel1:right:4:xapp-status@cinnamon.org:4', 'panel1:right:5:notifications@cinnamon.org:5', 'panel1:right:6:printers@cinnamon.org:6', 'panel1:right:7:removable-drives@cinnamon.org:7', 'panel1:right:8:keyboard@cinnamon.org:8', 'panel1:right:9:favorites@cinnamon.org:9', 'panel1:right:10:network@cinnamon.org:10', 'panel1:right:11:sound@cinnamon.org:11', 'panel1:right:12:power@cinnamon.org:12', 'panel1:right:13:calendar@cinnamon.org:13', 'panel1:right:14:cornerbar@cinnamon.org:14', 'panel2:left:0:window-list@cinnamon.org:17', 'panel4:left:0:window-list@cinnamon.org:18', 'panel5:left:0:window-list@cinnamon.org:19', 'panel6:left:0:window-list@cinnamon.org:20', 'panel3:left:0:window-list@cinnamon.org:21', 'panel1:left:1:sessionManager@scollins:16']"
 
+    echo "### Adding superpaper config files ###" #########################################################################
+mkdir -p "$USER_HOME/.config/superpaper"
+
+chown david "$USER_HOME/.config/superpaper"
+chgrp david "$USER_HOME/.config/superpaper"
+
+RES_GITHUB=https://raw.githubusercontent.com/PockyBum522/linux-files/refs/heads/master/scripts/initialization/resources/config-files/superpaper/DAVID-DESKTOP
+
+wget $RES_GITHUB/display_systems.dat > "$USER_HOME/.config/superpaper/display_systems.dat"
+wget $RES_GITHUB/general_settings > "$USER_HOME/.config/superpaper/general_settings"
+
+mkdir -p "$USER_HOME/.config/superpaper/profiles"
+
+chown david "$USER_HOME/.config/superpaper/profiles"
+chgrp david "$USER_HOME/.config/superpaper/profiles"
+
+wget $RES_GITHUB/profiles/Defaults.profile > "$USER_HOME/.config/superpaper/profiles/Defaults.profile"
 
     fi
+
 
     echo "### Setting xed as default file opener for correct filetypes. Apparently .sln counts as text/plain. That is stupid ###" ################################################################
 
