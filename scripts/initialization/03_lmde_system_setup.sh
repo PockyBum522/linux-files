@@ -623,7 +623,11 @@ text/markdown=org.x.editor.desktop;
 
 EOF
 
-echo "### Finished installing/configuring everything! ###"  ###########################################################################
+echo "### Finished installing/configuring everything! Launching a few things ###"  ###########################################################################
+
+copyq
+
+flameshot
 
 # Now that we're done, show the QR to log in to tailscale
 
