@@ -215,21 +215,91 @@ apt install -y xbindkeys
 echo "### Setting up keyboard shortcuts ###" ##############################################################################
 # Make custom shortcuts for firefox, beeper, github desktop
 
+
+# To kill it if it is running
+#pkill xbindkeys
+
+echo "### Killed xbindkeys process if it was running ###"
+
 # USER_HOME="/home/david"
 # Make default file
-xbindkeys --defaults > "$USER_HOME/.xbindkeysrc"
+if [ ! -f "$USER_HOME/.xbindkeysrc" ]; then
 
-chown david "$USER_HOME/.xbindkeysrc"
-chgrp david "$USER_HOME/.xbindkeysrc"
-     
-# To kill it if it is running
-killall -s1 xbindkeys
-     
-# The xbindkeys format is easy, first line is the command and second line is the shortkey.
-# To discover the shortkey, use: $ xbindkeys -k and press the keys.
+    echo "No xbindkeysrc file found at $USER_HOME so making default file"
+        
+    # The xbindkeys format is easy, first line is the command and second line is the shortkey.
+    # To discover the shortkey, use: $ xbindkeys -k and press the keys.
 
 
-    cat >> "$USER_HOME/.xbindkeysrc"<<EOF 
+cat >> "$USER_HOME/.xbindkeysrc"<<EOF 
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 1.8.7
+#
+# If you edit this file, do not forget to uncomment any lines
+# that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# The format of a command line is:
+#    "command to start"
+#       associated key
+#
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h
+# The XK_ is not needed.
+#
+# List of modifier:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+
+# The release modifier is not a standard X modifier, but you can
+# use it if you want to catch release events instead of press events
+
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+
+# Examples of commands:
+
+"xbindkeys_show" 
+  control+shift + q
+
+# set directly keycode (here control + f with my keyboard)
+#"xterm"
+#  c:41 + m:0x4
+
+# specify a mouse button
+#"xterm"
+#  control + b:2
+
+#"xterm -geom 50x20+20+20"
+#   Shift+Mod2+alt + s
+#
+## set directly keycode (here control+alt+mod2 + f with my keyboard)
+#"xterm"
+#  alt + c:0x29 + m:4 + mod2
+#
+## Control+Shift+a  release event starts rxvt
+#"rxvt"
+#  release+control+shift + a
+#
+## Control + mouse button 2 release event starts rxvt
+#"rxvt"
+#  Control + b:2 + Release
+
+
 # Alt + f for Firefox
 
 "firefox"
@@ -248,13 +318,28 @@ killall -s1 xbindkeys
     m:0x18 + c:28
 
 
+##################################
+# End of xbindkeys configuration #
+##################################
+
 EOF
 
 
+    echo  "Changing owner and group of $USER_HOME/.xbindkeysrc"
+
+    chown david "$USER_HOME/.xbindkeysrc"
+    chgrp david "$USER_HOME/.xbindkeysrc"
+
+fi
+
+
+echo  "Restarting xbindkeysrc process with new config file"
+
 # To start xbindkeys
-xbindkeys -f "$USER_HOME/.xbindkeysrc"
+run-in-user-session xbindkeys -f "$USER_HOME/.xbindkeysrc"
 
 
+echo "### Adding shiftkey repo then installing github desktop ###" ###############################################################################
 # Github desktop package feed add
 wget -qO - https://mirror.mwt.me/shiftkey-desktop/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/mwt-desktop.gpg > /dev/null
 sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mwt-desktop.gpg] https://mirror.mwt.me/shiftkey-desktop/deb/ any main" > /etc/apt/sources.list.d/mwt-desktop.list'
