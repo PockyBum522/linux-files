@@ -204,7 +204,6 @@ apt install -y filezilla
 apt install -y mosquitto-clients
 apt install -y haskell-stack                    # for kmonad
 apt install -y mgba-qt
-apt install -y seafile-gui
 apt install -y krita
 apt install -y chromium
 apt install -y usrmerge
