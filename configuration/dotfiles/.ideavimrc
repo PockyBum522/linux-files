@@ -24,3 +24,5 @@ ino <up> <Nop>
 nmap <S-Enter> i<CR><Esc>k
 nmap <CR> i<CR><Esc>
 
+" Ignore case by default when searching
+set ignorecase
