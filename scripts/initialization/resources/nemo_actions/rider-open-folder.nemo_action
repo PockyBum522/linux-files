@@ -1,0 +1,9 @@
+[Nemo Action]
+Active=true
+Name=Open as Rider Project
+Comment=Open as Rider Project
+Exec=/home/david/.local/share/JetBrains/Toolbox/apps/rider/bin/rider "%P"
+Icon-Name=rider
+Selection=any
+Extensions=any
+Terminal=false
