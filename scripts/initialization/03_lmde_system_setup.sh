@@ -211,6 +211,8 @@ apt install -y spotify-client
 apt install -y flameshot
 apt install -y xbindkeys
 apt install -y unzip
+apt install -y input-remapper
+
 
 echo "### Setting up keyboard shortcuts ###" ##############################################################################
 # Make custom shortcuts for firefox, beeper, github desktop
