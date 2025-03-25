@@ -17,13 +17,7 @@
         "Left": 894,
         "Top": 0,
         "Width": 4230,
-        "Height": 2742
-      },
-      {
-        "Left": 5120,
-        "Top": 0,
-        "Width": 2560,
-        "Height": 2800
+        "Height": 2798
       }
     ]
   },
@@ -49,9 +43,9 @@
     "PreferredPositions": [
       {
         "Left": 278,
-        "Top": 3188,
+        "Top": 1488,
         "Width": 2560,
-        "Height": 1206
+        "Height": 1304
       },
       {
         "Left": 278,
@@ -102,7 +96,7 @@
         "Left": 278,
         "Top": 344,
         "Width": 2560,
-        "Height": 1080
+        "Height": 1000
       },
       {
         "Left": 278,
