@@ -1,6 +1,7 @@
 [
   {
     "ClassPattern": "JetBrains Toolbox.jetbrains-toolbox",
+    "LeftTopScalingMultiple": 0.5,
     "PreferredPositions": [
       {
         "Left": 4242,
@@ -14,10 +15,10 @@
     "ClassPattern": "jetbrains-rider.jetbrains-rider",
     "PreferredPositions": [
       {
-        "Left": 894,
-        "Top": 0,
-        "Width": 4230,
-        "Height": 2798
+        "Left": 200,
+        "Top": 200,
+        "Width": 2000,
+        "Height": 2000
       }
     ]
   },
@@ -42,8 +43,8 @@
     "ClassPattern": "beeper.Beeper",
     "PreferredPositions": [
       {
-        "Left": 278,
-        "Top": 1488,
+        "Left": 700,
+        "Top": 200,
         "Width": 2560,
         "Height": 1304
       },
@@ -107,3 +108,4 @@
     ]
   }
 ]
+
