@@ -13,12 +13,19 @@
   },
   {
     "ClassPattern": "jetbrains-rider.jetbrains-rider",
+    "LeftTopScalingMultiple": 2.0,
     "PreferredPositions": [
       {
-        "Left": 200,
-        "Top": 200,
-        "Width": 2000,
-        "Height": 2000
+        "Left": 890,
+        "Top": 0,
+        "Width": 4230,
+        "Height": 2798
+      },
+      {
+        "Left": 5120,
+        "Top": 0,
+        "Width": 2560,
+        "Height": 2800
       }
     ]
   },
@@ -41,12 +48,13 @@
   },
   {
     "ClassPattern": "beeper.Beeper",
+    "LeftTopScalingMultiple": 2.0,
     "PreferredPositions": [
       {
-        "Left": 700,
-        "Top": 200,
+        "Left": 278,
+        "Top": 1516,
         "Width": 2560,
-        "Height": 1304
+        "Height": 1282
       },
       {
         "Left": 278,
@@ -83,27 +91,29 @@
         "Height": 1482
       },
       {
-      	"Left": 298,
-	    "Top": 1586,
-	    "Width": 2560,
-	    "Height": 1286
+        "Left": 278,
+        "Top": 1914,
+        "Width": 2560,
+        "Height": 1282
       }
     ]
   },
   {
     "ClassPattern": "github desktop.GitHub Desktop",
+    "ExtraLeftOffset": -0,
+    "ExtraTopOffset": 56,
     "PreferredPositions": [
       {
         "Left": 278,
-        "Top": 344,
+        "Top": 270,
         "Width": 2560,
         "Height": 1000
       },
       {
         "Left": 278,
-        "Top": 344,
-        "Width": 4862,
-        "Height": 2528
+        "Top": 270,
+        "Width": 4840,
+        "Height": 2530
       }
     ]
   }
