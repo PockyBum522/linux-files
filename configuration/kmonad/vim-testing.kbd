@@ -70,10 +70,10 @@
 
 (deflayer vimtoggle
   _     _     _     _     _     _     _     _     _     _     _     _     _             _     _     _
-  _     _     _     _     _     _     _     _     _     _     _     _     _     _       _     _     _       _     _     _     _
-  _     _     @fw   @nwlb _     _     _     ins   home  pgup  _     _     _     _       _     _     _       _     _     _     _
+  _     _     _     _     _     _     _     ins   home  pgup  _     _     _     _       _     _     _       _     _     _     _
+  _     _     @fw   @nwlb _     _     _     del   end   pgdn  _     _     _     _       _     _     _       _     _     _     _
   _     _     _     _     _     _     _     left  down  up    right _     _                                 _     _     _
-  @vcap _     _     _     _     _     @bw   del   end   pgdn  _     @find @vcap               _             _     _     _     _ 
+  _     _     _     _     _     _     @bw   _     _     _     _     @find _                   _             _     _     _     _ 
   _     _     _                       _                       _     _     _             _     _     _       _     _
 )
 
@@ -85,6 +85,7 @@
   _     _     _     _     _     _     _     _     _     _     _     _     _                   _             _     _     _     _ 
   _     _     _                       _                       _     _     _             _     _     _       _     _
 )
+
 
 (defalias
   cvim (tap-next esc (layer-toggle vimtoggle))

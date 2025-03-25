@@ -1,0 +1,153 @@
+[
+  {
+    "ClassPattern": "jetbrains-toolbox",
+    "PreferredPositions": [
+      {
+        "Left": 7240,
+        "Top": 2500,
+        "Width": 100,
+        "Height": 100
+      }
+    ]
+  },  
+  {
+    "ClassPattern": "beeper.Beeper",
+    "PreferredPositions": [
+      {
+        "Left": 4800,
+        "Top": 0,
+        "Width": 1920,
+        "Height": 1040
+      }
+    ]
+  },  
+  {
+    "ClassPattern": "xed.Xed",
+    "PreferredPositions": [
+      {
+        "Left": 1280,
+        "Top": 2494,
+        "Width": 1280,
+        "Height": 678
+      },
+      {
+        "Left": 3984,
+        "Top": 2734,
+        "Width": 1786,
+        "Height": 502
+      }
+    ]
+  },  
+  {
+    "ClassPattern": "jetbrains-rider.jetbrains-rider",
+    "PreferredPositions": [
+      {
+        "Left": 5760,
+        "Top": 1080,
+        "Width": 1919,
+        "Height": 2120
+      }
+    ]
+  },
+  {
+    "ClassPattern": "obsidian.obsidian",
+    "PreferredPositions": [
+      {
+        "Left": 3020,
+        "Top": 1,
+        "Width": 1780,
+        "Height": 1040
+      }
+    ]
+  },
+  {
+    "ClassPattern": "spotify.Spotify",
+    "PreferredPositions": [
+      {
+        "Left": 6720,
+        "Top": 1,
+        "Width": 1929,
+        "Height": 1010
+      }
+    ]
+  },
+  {
+    "ClassPattern": "seafile-applet.Seafile",
+    "PreferredPositions": [
+      {
+        "Left": 2880,
+        "Top": 20,
+        "Width": 200,
+        "Height": 1000
+      }
+    ]
+  },
+  {
+    "ClassPattern": "Navigator.firefox",
+    "PreferredPositions": [
+      {
+        "Left": 7680,
+        "Top": 1080,
+        "Width": 1920,
+        "Height": 2090
+      },
+      {
+        "Left": 4900,
+        "Top": 1080,
+        "Width": 1920,
+        "Height": 2090
+      }
+    ]
+  },    
+  {
+    "ClassPattern": "nemo.Nemo",
+    "PreferredPositions": [
+      {
+        "Left": 2560,
+        "Top": 1786,
+        "Width": 1280,
+        "Height": 678
+      },
+      {
+        "Left": 2560,
+        "Top": 2494,
+        "Width": 1280,
+        "Height": 678
+      },
+      {
+        "Left": 3984,
+        "Top": 2139,
+        "Width": 1786,
+        "Height": 502
+      }   
+    ]
+  },     
+  {
+    "ClassPattern": "desktop.GitHub",
+    "PreferredPositions": [
+      {
+        "Left": 2560,
+        "Top": 1080,
+        "Width": 1280,
+        "Height": 678
+      }
+    ]
+  },  
+  {
+    "ClassPattern": "gnome-terminal-server.Gnome-terminal",
+    "PreferredPositions": [
+      {
+        "Left": 2560,
+        "Top": 2494,
+        "Width": 1280,
+        "Height": 678
+      },
+      {
+        "Left": 1280,
+        "Top": 2494,
+        "Width": 1280,
+        "Height": 678
+      }
+    ]
+  }
+]
