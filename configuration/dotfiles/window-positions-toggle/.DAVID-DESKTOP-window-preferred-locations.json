@@ -123,7 +123,7 @@
     ]
   },     
   {
-    "ClassPattern": "desktop.GitHub",
+    "ClassPattern": "github desktop.GitHub Desktop",
     "PreferredPositions": [
       {
         "Left": 2560,
