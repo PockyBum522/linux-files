@@ -99,6 +99,23 @@
     ]
   },
   {
+    "ClassPattern": "gnome-terminal-server.Gnome-terminal",
+    "PreferredPositions": [
+      {
+        "Left": 278,
+        "Top": 804,
+        "Width": 2556,
+        "Height": 1658
+      },
+      {
+        "Left": 100,
+        "Top": 100,
+        "Width": 2444,
+        "Height": 1896
+      }
+    ]
+  },
+  {
     "ClassPattern": "github desktop.GitHub Desktop",
     "ExtraLeftOffset": -0,
     "ExtraTopOffset": 56,
