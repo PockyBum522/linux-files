@@ -1,0 +1,115 @@
+[
+  {
+    "ClassPattern": "JetBrains Toolbox.jetbrains-toolbox",
+    "PreferredPositions": [
+      {
+        "Left": 4242,
+        "Top": 1514,
+        "Width": 880,
+        "Height": 1344
+      }
+    ]
+  },
+  {
+    "ClassPattern": "jetbrains-rider.jetbrains-rider",
+    "PreferredPositions": [
+      {
+        "Left": 894,
+        "Top": 0,
+        "Width": 4230,
+        "Height": 2742
+      },
+      {
+        "Left": 5120,
+        "Top": 0,
+        "Width": 2560,
+        "Height": 2800
+      }
+    ]
+  },
+  {
+    "ClassPattern": "Navigator.firefox",
+    "PreferredPositions": [
+      {
+        "Left": 894,
+        "Top": 0,
+        "Width": 4230,
+        "Height": 2742
+      },
+      {
+        "Left": 5120,
+        "Top": 0,
+        "Width": 2560,
+        "Height": 2800
+      }
+    ]
+  },
+  {
+    "ClassPattern": "beeper.Beeper",
+    "PreferredPositions": [
+      {
+        "Left": 278,
+        "Top": 3188,
+        "Width": 2560,
+        "Height": 1206
+      },
+      {
+        "Left": 278,
+        "Top": 1814,
+        "Width": 2560,
+        "Height": 1893
+      }
+    ]
+  },
+  {
+    "ClassPattern": "xed.Xed",
+    "PreferredPositions": [
+      {
+        "Left": 278,
+        "Top": 804,
+        "Width": 2560,
+        "Height": 1482
+      },
+      {
+        "Left": 2580,
+        "Top": 128,
+        "Width": 2560,
+        "Height": 2744
+      }
+    ]
+  },  
+  {
+    "ClassPattern": "nemo.Nemo",
+    "PreferredPositions": [
+      {
+        "Left": 278,
+        "Top": 804,
+        "Width": 2560,
+        "Height": 1482
+      },
+      {
+      	"Left": 298,
+	    "Top": 1586,
+	    "Width": 2560,
+	    "Height": 1286
+      }
+    ]
+  },
+  {
+    "ClassPattern": "github desktop.GitHub Desktop",
+    "PreferredPositions": [
+      {
+        "Left": 278,
+        "Top": 344,
+        "Width": 2560,
+        "Height": 1080
+      },
+      {
+        "Left": 278,
+        "Top": 344,
+        "Width": 4862,
+        "Height": 2528
+      }
+    ]
+  }
+]
