@@ -1,6 +1,6 @@
 [
   {
-    "ClassPattern": "jetbrains-toolbox",
+    "ClassPattern": "JetBrains Toolbox.jetbrains-toolbox",
     "PreferredPositions": [
       {
         "Left": 7240,
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "ClassPattern": "seafile-applet.Seafile",
+    "ClassPattern": "seafile-applet.Seafile Client",
     "PreferredPositions": [
       {
         "Left": 2880,
