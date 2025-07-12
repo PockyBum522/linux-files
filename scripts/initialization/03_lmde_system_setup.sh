@@ -188,6 +188,7 @@ apt-get -y dist-upgrade
 
 echo "### Installing common programs ###" ###############################################################################
 apt install -y tmux
+apt install -y remmina
 apt install -y vim
 apt install -y git
 apt install -y htop
@@ -356,7 +357,6 @@ apt install github-desktop
 echo "### Installing common programs, flatpak edition ###" ###############################################################################
 flatpak install -y org.fkoehler.KTailctl
 flatpak install -y com.yubico.yubioath
-flatpak install -y org.remmina.Remmina
 flatpak install -y com.bitwarden.desktop
 flatpak install -y com.discordapp.Discord
 flatpak install -y md.obsidian.Obsidian
