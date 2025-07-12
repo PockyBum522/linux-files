@@ -37,6 +37,11 @@
 # sudo pkill xbindkeys && xbindkeys -f "/home/david/.xbindkeysrc"
 
 
+# PrintScreen key starts interactive flameshot capture
+"/usr/bin/flameshot gui"
+    Print
+    
+
 "firefox"
     Alt + f
 
@@ -69,9 +74,8 @@
     Alt + s
 
 
-# PrintScreen key starts interactive flameshot capture
-"/usr/bin/flameshot gui"
-    Print
+"/usr/bin/xed"
+    Alt + d
 
 
 ##################################
