@@ -242,17 +242,12 @@ cat >> "$USER_HOME/.xbindkeysrc"<<EOF
 #
 # Version: 1.8.7
 #
-# If you edit this file, do not forget to uncomment any lines
-# that you change.
-# The pound(#) symbol may be used anywhere for comments.
-#
 # To specify a key, you can use 'xbindkeys --key' or
 # 'xbindkeys --multikey' and put one of the two lines in this file.
 #
 # The format of a command line is:
 #    "command to start"
 #       associated key
-#
 #
 # A list of keys is in /usr/include/X11/keysym.h and in
 # /usr/include/X11/keysymdef.h
@@ -274,56 +269,56 @@ cat >> "$USER_HOME/.xbindkeysrc"<<EOF
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-# Examples of commands:
 
-"xbindkeys_show" 
-  control+shift + q
-
-# set directly keycode (here control + f with my keyboard)
-#"xterm"
-#  c:41 + m:0x4
-
-# specify a mouse button
-#"xterm"
-#  control + b:2
-
-#"xterm -geom 50x20+20+20"
-#   Shift+Mod2+alt + s
-#
-## set directly keycode (here control+alt+mod2 + f with my keyboard)
-#"xterm"
-#  alt + c:0x29 + m:4 + mod2
-#
-## Control+Shift+a  release event starts rxvt
-#"rxvt"
-#  release+control+shift + a
-#
-## Control + mouse button 2 release event starts rxvt
-#"rxvt"
-#  Control + b:2 + Release
+# TO RESTART AFTER MODIFYING THIS FILE 
+# sudo pkill xbindkeys && xbindkeys -f "/home/david/.xbindkeysrc"
 
 
-# Alt + f for Firefox
+# PrintScreen key starts interactive flameshot capture
+"/usr/bin/flameshot gui"
+    Print
+    
 
 "firefox"
-    m:0x18 + c:41
+    Alt + f
 
 
-# Alt + 2 for github desktop
+"gnome-terminal"
+    Alt + 1
+
 
 "github-desktop"
-    m:0x18 + c:11
+    Alt + 2
 
-
-# Alt + t for beeper
 
 "/home/david/.local/share/beeper/Beeper-Cloud.appimage"
-    m:0x18 + c:28
+    Alt + t
+
+
+"/usr/bin/veracrypt"
+    Alt + e
+
+
+"/usr/bin/vmware"
+    Alt + m
+
+
+"/usr/sbin/dotnet /media/secondary/repos/linux-files/bin/WindowPositionsToggle/WindowPositionsToggle.dll"
+    Alt + r
+    
+      
+"/usr/bin/spotify"
+    Alt + s
+
+
+"/usr/bin/xed"
+    Alt + d
 
 
 ##################################
 # End of xbindkeys configuration #
 ##################################
+
 
 EOF
 
@@ -656,6 +651,22 @@ cd /home/david/.local/share/cinnamon/applets/
 unzip /tmp/sessionManager@scollins.zip
 
 
+echo "### Installing directory-menu for cinnamon panel, NOTE you will have to add manually to panel, FIX THIS IN INIT SCRIPT" ######################################################################
+# Download and extract all spices applets
+curl https://codeload.github.com/linuxmint/cinnamon-spices-applets/zip/refs/heads/master > /tmp/cinnamon-spices-applets.zip
+unzip /tmp/cinnamon-spices-applets.zip -d /tmp
+ 
+# Make configuration dir and put config json file into it
+mkdir -p "$USER_HOME/.config/cinnamon/spices/directory-menu@torchipeppo"
+
+# Copy extracted applet to /home/user/.local/share/cinnamon/extensions/
+cp /tmp/cinnamon-spices-applets-master/directory-menu@torchipeppo/files/directory-menu@torchipeppo "$USER_HOME/.local/share/cinnamon/applets/directory-menu@torchipeppo"
+ 
+# Cleanup
+rm /tmp/cinnamon-spices-applets.zip
+rm -rf /tmp/cinnamon-spices-applets-master
+ 
+ 
 echo "### Adding gtile extension to cinnamon ###" ######################################################################
 curl https://cinnamon-spices.linuxmint.com/files/extensions/gTile@shuairan.zip > /tmp/gTile@shuairan.zip
 
@@ -733,7 +744,7 @@ if [ "$HOSTNAME" = DAVID-DESKTOP ]; then
 
     echo "### Configuring all panels ###" ######################################################################
 
-    run-in-user-session gsettings set org.cinnamon enabled-applets   "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:2:separator@cinnamon.org:1', 'panel1:right:3:systray@cinnamon.org:3', 'panel1:right:4:xapp-status@cinnamon.org:4', 'panel1:right:5:notifications@cinnamon.org:5', 'panel1:right:6:printers@cinnamon.org:6', 'panel1:right:7:removable-drives@cinnamon.org:7', 'panel1:right:8:keyboard@cinnamon.org:8', 'panel1:right:9:favorites@cinnamon.org:9', 'panel1:right:10:network@cinnamon.org:10', 'panel1:right:11:sound@cinnamon.org:11', 'panel1:right:12:power@cinnamon.org:12', 'panel1:right:13:calendar@cinnamon.org:13', 'panel1:right:14:cornerbar@cinnamon.org:14', 'panel2:left:0:window-list@cinnamon.org:17', 'panel4:left:0:window-list@cinnamon.org:18', 'panel5:left:0:window-list@cinnamon.org:19', 'panel6:left:0:window-list@cinnamon.org:20', 'panel3:left:0:window-list@cinnamon.org:21', 'panel1:left:1:sessionManager@scollins:16']"
+    run-in-user-session gsettings set org.cinnamon enabled-applets   "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:2:separator@cinnamon.org:1', 'panel1:right:19:systray@cinnamon.org:3', 'panel1:right:20:xapp-status@cinnamon.org:4', 'panel1:right:21:notifications@cinnamon.org:5', 'panel1:right:22:printers@cinnamon.org:6', 'panel1:right:23:removable-drives@cinnamon.org:7', 'panel1:right:24:keyboard@cinnamon.org:8', 'panel1:right:25:favorites@cinnamon.org:9', 'panel1:right:26:network@cinnamon.org:10', 'panel1:right:27:sound@cinnamon.org:11', 'panel1:right:28:power@cinnamon.org:12', 'panel1:right:29:calendar@cinnamon.org:13', 'panel1:right:30:cornerbar@cinnamon.org:14', 'panel2:left:0:window-list@cinnamon.org:17', 'panel4:left:0:window-list@cinnamon.org:18', 'panel5:left:0:window-list@cinnamon.org:19', 'panel6:left:0:window-list@cinnamon.org:20', 'panel3:left:0:window-list@cinnamon.org:21', 'panel1:left:1:sessionManager@scollins:16', 'panel5:right:0:calendar@cinnamon.org:23', 'panel3:right:0:calendar@cinnamon.org:24', 'panel4:right:0:calendar@cinnamon.org:25', 'panel2:right:0:calendar@cinnamon.org:26', 'panel6:right:0:calendar@cinnamon.org:27', 'panel1:left:5:window-list@cinnamon.org:29', 'panel1:right:17:inhibit@cinnamon.org:30', 'panel1:right:16:force-quit@cinnamon.org:31', 'panel1:right:15:restart-cinnamon@kolle:32', 'panel1:left:4:separator@cinnamon.org:34', 'panel1:right:18:separator@cinnamon.org:35', 'panel1:right:1:separator@cinnamon.org:46', 'panel1:left:3:directory-menu@torchipeppo:47']"
 
     echo "### Adding superpaper config files ###" #########################################################################
 mkdir -p "$USER_HOME/.config/superpaper"
