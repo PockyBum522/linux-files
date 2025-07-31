@@ -66,8 +66,9 @@
     Alt + m
 
 
-"/usr/sbin/dotnet /media/secondary/repos/linux-files/bin/WindowPositionsToggle/WindowPositionsToggle.Desktop.dll"
-    Alt + r
+# Commenting this out to attempt to move hook to application code itself
+#"/usr/sbin/dotnet /media/secondary/repos/linux-files/bin/WindowPositionsToggle/WindowPositionsToggle.Desktop.dll"
+#    Alt + r
     
       
 "/usr/bin/spotify"
