@@ -660,7 +660,7 @@ unzip /tmp/cinnamon-spices-applets.zip -d /tmp
 mkdir -p "$USER_HOME/.config/cinnamon/spices/directory-menu@torchipeppo"
 
 # Copy extracted applet to /home/user/.local/share/cinnamon/extensions/
-cp /tmp/cinnamon-spices-applets-master/directory-menu@torchipeppo/files/directory-menu@torchipeppo "$USER_HOME/.local/share/cinnamon/applets/directory-menu@torchipeppo"
+mv -r -f /tmp/cinnamon-spices-applets-master/directory-menu@torchipeppo/files/directory-menu@torchipeppo "$USER_HOME/.local/share/cinnamon/applets/directory-menu@torchipeppo"
  
 # Cleanup
 rm /tmp/cinnamon-spices-applets.zip
