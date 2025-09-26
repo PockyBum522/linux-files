@@ -677,32 +677,36 @@ unzip /tmp/gTile@shuairan.zip
 run-in-user-session gsettings set org.cinnamon enabled-extensions "['gTile@shuairan']"
 
 
-echo "### Installing superpaper AppImage ###" ######################################################################
-mkdir -p /home/david/.local/share/superpaper/
-cd /home/david/.local/share/superpaper/
-wget https://github.com/hhannine/superpaper/releases/download/v2.2.1/Superpaper-2.2.1-x86_64.AppImage > ./Superpaper-2.2.1-x86_64.AppImage
-rm /home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage
-mv /home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage.1 /home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage
-chmod +x /home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage
 
+# TODO: https://github.com/hhannine/superpaper/blob/master/docs/installation-linux.md
+# SUPERPAPER NEEDS TO BE INSTALLED PER ABOVE TO WORK RIGHT ON LMDE
 
-echo "### Setting superpaper to run at startup ###" ################################################################
-if [ ! -f "$USER_HOME/.config/autostart/Superpaper.desktop" ]
-then
-    cat >> "$USER_HOME/.config/autostart/Superpaper.desktop"<<EOF 
-[Desktop Entry]
-Type=Application
-Exec=/home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage
-X-GNOME-Autostart-enabled=true
-NoDisplay=false
-Hidden=false
-Name[en_US]=Superpaper
-Comment[en_US]=No description
-X-GNOME-Autostart-Delay=5
-
-EOF
-fi
-
+#echo "### Installing superpaper AppImage ###" ######################################################################
+#mkdir -p /home/david/.local/share/superpaper/
+#cd /home/david/.local/share/superpaper/
+#wget https://github.com/hhannine/superpaper/releases/download/v2.2.1/Superpaper-2.2.1-x86_64.AppImage > ./Superpaper-2.2.1-x86_64.AppImage
+#rm /home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage
+#mv /home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage.1 /home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage
+#chmod +x /home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage
+#
+#
+#echo "### Setting superpaper to run at startup ###" ################################################################
+#if [ ! -f "$USER_HOME/.config/autostart/Superpaper.desktop" ]
+#then
+#    cat >> "$USER_HOME/.config/autostart/Superpaper.desktop"<<EOF 
+#[Desktop Entry]
+#Type=Application
+#Exec=/home/david/.local/share/superpaper/Superpaper-2.2.1-x86_64.AppImage
+#X-GNOME-Autostart-enabled=true
+#NoDisplay=false
+#Hidden=false
+#Name[en_US]=Superpaper
+#Comment[en_US]=No description
+#X-GNOME-Autostart-Delay=5
+#
+#EOF
+#fi
+#
 
 echo "### About to run machine/hostname specific work ###" ######################################################################
 if [ "$HOSTNAME" = DAVID-LAPTOP ]; then
