@@ -539,40 +539,40 @@ Exec=flameshot launcher
 
 EOF
 fi
-
-
-echo "### Setting jetbrains toolbox to run at startup ###" ################################################################
-if [ ! -f "$USER_HOME/.config/autostart/JetBrains Toolbox.desktop" ]
-then
-    cat >> "$USER_HOME/.config/autostart/JetBrains Toolbox.desktop"<<EOF 
-[Desktop Entry]
-Type=Application
-Exec=jetbrains-toolbox
-X-GNOME-Autostart-enabled=true
-NoDisplay=false
-Hidden=false
-Name[en_US]=JatBrains Toolbox
-Comment[en_US]=No description
-X-GNOME-Autostart-Delay=2
-
-EOF
-fi
-
-
-echo "### Downloading latest beeper appimage ###" #########################################################################
-if [ ! -d "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage" ]
-then
-    curl https://download.beeper.com/linux/appImage/x64 > "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage"
-fi
-
-chmod +x "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage"
-
-if [ ! -f "$USER_HOME/Desktop/Beeper" ]
-then
-    ln -s "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage" "$USER_HOME/Desktop/Beeper"
-fi
-
-
+#
+#
+#echo "### Setting jetbrains toolbox to run at startup ###" ################################################################
+#if [ ! -f "$USER_HOME/.config/autostart/JetBrains Toolbox.desktop" ]
+#then
+#    cat >> "$USER_HOME/.config/autostart/JetBrains Toolbox.desktop"<<EOF 
+#[Desktop Entry]
+#Type=Application
+#Exec=jetbrains-toolbox
+#X-GNOME-Autostart-enabled=true
+#NoDisplay=false
+#Hidden=false
+#Name[en_US]=JatBrains Toolbox
+#Comment[en_US]=No description
+#X-GNOME-Autostart-Delay=2
+#
+#EOF
+#fi
+#
+#
+#echo "### Downloading latest beeper appimage ###" #########################################################################
+#if [ ! -d "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage" ]
+#then
+#    curl https://download.beeper.com/linux/appImage/x64 > "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage"
+#fi
+#
+#chmod +x "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage"
+#
+#if [ ! -f "$USER_HOME/Desktop/Beeper" ]
+#then
+#    ln -s "$BEEPER_INSTALLS_DIR/Beeper-Cloud.appimage" "$USER_HOME/Desktop/Beeper"
+#fi
+#
+#
 echo "### Setting up kmonad ###" ##############################################################
 mkdir -p /home/david/.local/share
 cd /home/david/.local/share
