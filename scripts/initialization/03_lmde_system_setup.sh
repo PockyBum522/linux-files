@@ -61,11 +61,11 @@ mkdir -p "$KMONAD_INSTALL_DIR"
 
 
 echo "### Setting theme to dark mode ###" ##############################################################################
-run-in-user-session gsettings set org.cinnamon.desktop.interface cursor-theme 'Bibata-Modern-Classic'
+#run-in-user-session gsettings set org.cinnamon.desktop.interface cursor-theme 'Bibata-Modern-Classic'
 run-in-user-session gsettings set org.x.apps.portal color-scheme 'prefer-dark'
-run-in-user-session gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-L-Dark'
-run-in-user-session gsettings set org.cinnamon.desktop.interface icon-theme 'Mint-L-Dark'
-run-in-user-session gsettings set org.cinnamon.theme name 'Mint-L-Dark'
+#run-in-user-session gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-L-Dark'
+#run-in-user-session gsettings set org.cinnamon.desktop.interface icon-theme 'Mint-L-Dark'
+#run-in-user-session gsettings set org.cinnamon.theme name 'Mint-L-Dark'
 
 echo "### Turn off most sounds ###" ##############################################################################
 run-in-user-session gsettings set org.cinnamon.sounds notification-enabled false
