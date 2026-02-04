@@ -12,12 +12,14 @@
   },  
   {
     "ClassPattern": "beeper.Beeper",
+    "ExtraLeftOffset": 10,
+    "ExtraTopOffset": 40,
     "PreferredPositions": [
       {
-        "Left": 4800,
+        "Left": 4785,
         "Top": 0,
         "Width": 1920,
-        "Height": 1040
+        "Height": 1058
       }
     ]
   },  
@@ -53,9 +55,9 @@
     "ClassPattern": "obsidian.obsidian",
     "PreferredPositions": [
       {
-        "Left": 3020,
+        "Left": 3200,
         "Top": 1,
-        "Width": 1780,
+        "Width": 1585,
         "Height": 1040
       }
     ]
@@ -64,9 +66,9 @@
     "ClassPattern": "spotify.Spotify",
     "PreferredPositions": [
       {
-        "Left": 6720,
+        "Left": 6704,
         "Top": 1,
-        "Width": 1929,
+        "Width": 1920,
         "Height": 1010
       }
     ]
@@ -75,10 +77,10 @@
     "ClassPattern": "seafile-applet.Seafile Client",
     "PreferredPositions": [
       {
-        "Left": 2880,
-        "Top": 20,
-        "Width": 200,
-        "Height": 1000
+        "Left": 2865,
+        "Top": 0,
+        "Width": 338,
+        "Height": 1045
       }
     ]
   },
