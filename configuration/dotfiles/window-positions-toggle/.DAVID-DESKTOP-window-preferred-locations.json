@@ -1,5 +1,16 @@
 [
   {
+    "ClassPattern": "jetbrains-clion.jetbrains-clion",
+    "PreferredPositions": [
+      {
+        "Left": 5757,
+        "Top": 1082,
+        "Width": 1920,
+        "Height": 2114
+      }
+    ]
+  },  
+  {
     "ClassPattern": "JetBrains Toolbox.jetbrains-toolbox",
     "PreferredPositions": [
       {
