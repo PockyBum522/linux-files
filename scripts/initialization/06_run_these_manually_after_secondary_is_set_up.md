@@ -5,5 +5,5 @@ curl https://raw.githubusercontent.com/PockyBum522/linux-files/refs/heads/master
 
 sudo rm /home/david/.xbindkeysrc
 
-ln -s /home/david/.xbindkeysrc /media/secondary/repos/linux-files/configuration/dotfiles/.xbindkeysrc
+ln -s /media/secondary/repos/linux-files/configuration/dotfiles/.xbindkeysrc /home/david/.xbindkeysrc
 
