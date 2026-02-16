@@ -27,10 +27,10 @@
     "ExtraTopOffset": 40,
     "PreferredPositions": [
       {
-        "Left": 4785,
+        "Left": 4815,
         "Top": 0,
         "Width": 1920,
-        "Height": 1058
+        "Height": 1038
       }
     ]
   },  
@@ -56,9 +56,9 @@
     "PreferredPositions": [
       {
         "Left": 5760,
-        "Top": 1080,
+        "Top": 1106,
         "Width": 1919,
-        "Height": 2120
+        "Height": 2118
       }
     ]
   },
@@ -66,7 +66,7 @@
     "ClassPattern": "obsidian.obsidian",
     "PreferredPositions": [
       {
-        "Left": 3200,
+        "Left": 3230,
         "Top": 1,
         "Width": 1585,
         "Height": 1040
@@ -88,7 +88,7 @@
     "ClassPattern": "seafile-applet.Seafile Client",
     "PreferredPositions": [
       {
-        "Left": 2865,
+        "Left": 2895,
         "Top": 0,
         "Width": 338,
         "Height": 1045
@@ -105,10 +105,10 @@
         "Height": 2090
       },
       {
-        "Left": 4900,
+        "Left": 4400,
         "Top": 1080,
         "Width": 1920,
-        "Height": 2090
+        "Height": 1000
       }
     ]
   },    
