@@ -29,6 +29,11 @@ read -n 1 -r -s -p $'AGAIN, I AM ASKING YOU: HAVE YOU READ THE WARNING AT THE TO
 
 # TODO: Need to give /tmp/ permissions in flatseal for remmina for opening files by CLI to work
 
+# Add the following lines to /etc/sudoers.d/chmod-usb-fix-for-rdp 
+# ALL ALL = NOPASSWD:/usr/bin/chmod 777 /dev/bus/usb/* -R
+# ALL ALL = NOPASSWD:/usr/bin/chmod +x /tmp/lan-xs-cad.remmina
+
+
 set -e
 set -o pipefail
 
