@@ -1,0 +1,9 @@
+name=Default
+spanmode=advanced
+spangroups=025,134
+slideshow=True
+delay=3600.0
+sortmode=date_seeded_shuffle
+perspective=default
+display0paths=/media/secondary/Wallpapers/Tri Screen/4k/Dark Only
+display1paths=/media/secondary/Wallpapers/Tri Screen/1080p/Very Dark Only
