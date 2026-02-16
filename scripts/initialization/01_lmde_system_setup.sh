@@ -27,6 +27,7 @@ read -n 1 -r -s -p $'AGAIN, I AM ASKING YOU: HAVE YOU READ THE WARNING AT THE TO
 
 # TODO: See if there's anything better for my needs than flameshot
 
+# TODO: Need to give /tmp/ permissions in flatseal for remmina for opening files by CLI to work
 
 set -e
 set -o pipefail
@@ -188,7 +189,6 @@ apt-get -y dist-upgrade
 
 echo "### Installing common programs ###" ###############################################################################
 apt install -y tmux
-apt install -y remmina
 apt install -y vim
 apt install -y git
 apt install -y htop
@@ -356,6 +356,12 @@ flatpak install -y com.yubico.yubioath
 flatpak install -y com.bitwarden.desktop
 flatpak install -y com.discordapp.Discord
 flatpak install -y md.obsidian.Obsidian
+
+# Note that you need to give /tmp/ permissions in flatseal for remmina for opening files by CLI to work
+flatpak install -y com.remmina.Remmina
+flatpak install -y com.github.tchx84.Flatseal
+
+
 
 
 echo "### Setting system audio volume to 0 (Muted) ###" ################################################################
