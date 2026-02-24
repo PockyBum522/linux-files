@@ -1,22 +1,5 @@
 #! /bin/bash
 
-# Before running this on DAVID-DESKTOP, or anything with a finnicky NVIDIA card, do the following:
-
-# Fresh install, and then don't do anything else before doing the below steps:
-
-#       1. Install Nvidia driver from Nvidia site
-#       2. Install arandr
-#       3. Configure screens per picture on phone in arandr
-#       4. Go into display settings, change some small things, click okay, change that thing back, click okay (this is because arandr will set up screen position right but it won't persist after reboot)
-
-# After those, then you can run this script.
-
-
-read -n 1 -r -s -p $'HAVE YOU READ THE WARNING AT THE TOP OF THE SCRIPT? IF YOU ARE RUNNING THIS ON A COMPUTER WITH A FINNICKY NVIDIA CARD, LOOK AT THE WARNING AND DO WHAT IT SAYS BEFORE RUNNING THIS\n'
-
-read -n 1 -r -s -p $'AGAIN, I AM ASKING YOU: HAVE YOU READ THE WARNING AT THE TOP OF THE SCRIPT? IF YOU ARE RUNNING THIS ON A COMPUTER WITH A FINNICKY NVIDIA CARD, LOOK AT THE WARNING AND DO WHAT IT SAYS BEFORE RUNNING THIS. YOU CAN JUST CLOSE THIS SCRIPT OR CTRL + C IF YOU ARE NOT READY\n'
-
-
 # TODO: https://github.com/AdnanHodzic/displaylink-debian
 
 # TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
@@ -218,6 +201,7 @@ apt install -y flameshot
 apt install -y xbindkeys
 apt install -y unzip
 apt install -y pipx
+apt install -y pcscd                 # For yubikey and smart cards
 apt install -y wxpython-tools
 
 
