@@ -17,6 +17,16 @@
 # ALL ALL = NOPASSWD:/usr/bin/chmod +x /tmp/lan-xs-cad.remmina
 
 
+# PER https://unix.stackexchange.com/questions/128220/how-do-i-set-my-dns-when-resolv-conf-is-being-overwritten
+
+# sudo apt install resolvconf
+# Add 'nameserver 192.168.1.25' for any computers permanently on Allen Street LAN to
+# /etc/resolvconf/resolv.conf.d/head
+# save, then run 'sudo resolvconf -u'
+
+
+
+
 set -e
 set -o pipefail
 
