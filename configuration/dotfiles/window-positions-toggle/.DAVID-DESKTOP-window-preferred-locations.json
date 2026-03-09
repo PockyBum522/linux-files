@@ -27,7 +27,7 @@
     "ExtraTopOffset": 40,
     "PreferredPositions": [
       {
-        "Left": 4815,
+        "Left": 4922,
         "Top": 0,
         "Width": 1920,
         "Height": 1038
@@ -66,9 +66,9 @@
     "ClassPattern": "obsidian.obsidian",
     "PreferredPositions": [
       {
-        "Left": 3230,
-        "Top": 1,
-        "Width": 1585,
+        "Left": 3332,
+        "Top": 0,
+        "Width": 1590,
         "Height": 1040
       }
     ]
@@ -77,7 +77,7 @@
     "ClassPattern": "spotify.Spotify",
     "PreferredPositions": [
       {
-        "Left": 6704,
+        "Left": 6842,
         "Top": 1,
         "Width": 1920,
         "Height": 1010
@@ -88,7 +88,7 @@
     "ClassPattern": "seafile-applet.Seafile Client",
     "PreferredPositions": [
       {
-        "Left": 2895,
+        "Left": 3000,
         "Top": 0,
         "Width": 338,
         "Height": 1045
