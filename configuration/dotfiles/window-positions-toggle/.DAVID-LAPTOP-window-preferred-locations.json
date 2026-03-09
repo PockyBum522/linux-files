@@ -17,15 +17,15 @@
     "PreferredPositions": [
       {
         "Left": 890,
-        "Top": 0,
-        "Width": 4230,
-        "Height": 2798
+        "Top": 230,
+        "Width": 5250,
+        "Height": 3135
       },
       {
-        "Left": 5120,
+        "Left": 0,
         "Top": 0,
-        "Width": 2560,
-        "Height": 2800
+        "Width": 6146,
+        "Height": 3370
       }
     ]
   },
@@ -52,7 +52,7 @@
     "PreferredPositions": [
       {
         "Left": 278,
-        "Top": 1516,
+        "Top": 1016,
         "Width": 2560,
         "Height": 1282
       },
@@ -86,7 +86,7 @@
     "PreferredPositions": [
       {
         "Left": 278,
-        "Top": 804,
+        "Top": 1826,
         "Width": 2560,
         "Height": 1482
       },
