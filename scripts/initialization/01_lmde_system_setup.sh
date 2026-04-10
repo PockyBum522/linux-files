@@ -10,6 +10,16 @@
 
 # TODO: See if there's anything better for my needs than flameshot
 
+# TODO: Fix spotify install
+
+# TODO: Fix jetbrains install
+
+# TODO: Fix remmina install
+
+# TODO: Fix barrier to deskflow
+
+# TODO: Figure out how to auto-install directory menu applet on taskbar
+
 # TODO: Need to give /tmp/ permissions in flatseal for remmina for opening files by CLI to work
 
 # Add the following lines to /etc/sudoers.d/chmod-usb-fix-for-rdp 
@@ -193,7 +203,6 @@ apt install -y htop
 apt install -y mint-meta-codecs
 apt install -y feh
 apt install -y xdotool
-apt install -y barrier
 apt install -y gparted
 apt install -y k4dirstat
 apt install -y tigervnc-viewer
@@ -206,7 +215,6 @@ apt install -y mgba-qt
 apt install -y krita
 apt install -y chromium
 apt install -y usrmerge
-apt install -y spotify-client
 apt install -y flameshot
 apt install -y xbindkeys
 apt install -y unzip
@@ -357,7 +365,7 @@ flatpak install -y com.discordapp.Discord
 flatpak install -y md.obsidian.Obsidian
 
 # Note that you need to give /tmp/ permissions in flatseal for remmina for opening files by CLI to work
-flatpak install -y com.remmina.Remmina
+#flatpak install -y com.remmina.Remmina
 flatpak install -y com.github.tchx84.Flatseal
 
 
@@ -591,44 +599,45 @@ then
 
 fi
 
+# TODO:
 
-echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
+#echo "### Downloading and installing jetbrains toolbox ###" ##############################################################
 
 # make folders it will need later
-mkdir -p "$USER_HOME/.local/share/JetBrains/Toolbox/apps"
-mkdir -p "$USER_HOME/.local/share/JetBrains/Toolbox/scripts"
-
-TMP_DIR="/tmp"
-INSTALL_DIR="$USER_HOME/.local/share/JetBrains/Toolbox/InstallerBin"
-SYMLINK_DIR="$USER_HOME/.local/bin"
-
-echo -e "\e[94mFetching the URL of the latest version...\e[39m"
-ARCHIVE_URL=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release' | grep -Po '"linux":.*?[^\\]",' | awk -F ':' '{print $3,":"$4}'| sed 's/[", ]//g')
-ARCHIVE_FILENAME=$(basename "$ARCHIVE_URL")
-
-echo -e "\e[94mDownloading $ARCHIVE_FILENAME...\e[39m"
-rm "$TMP_DIR/$ARCHIVE_FILENAME" 2>/dev/null || true
-wget -q --show-progress -cO "$TMP_DIR/$ARCHIVE_FILENAME" "$ARCHIVE_URL"
-
-echo -e "\e[94mExtracting to $INSTALL_DIR...\e[39m"
-mkdir -p "$INSTALL_DIR"
-rm "$INSTALL_DIR/jetbrains-toolbox" 2>/dev/null || true
-tar -xzf "$TMP_DIR/$ARCHIVE_FILENAME" -C "$INSTALL_DIR" --strip-components=1
-rm "$TMP_DIR/$ARCHIVE_FILENAME"
-chmod +x "$INSTALL_DIR/jetbrains-toolbox"
-
-echo -e "\e[94mSymlinking to $SYMLINK_DIR/jetbrains-toolbox...\e[39m"
-mkdir -p "$SYMLINK_DIR"
-rm "$SYMLINK_DIR/jetbrains-toolbox" 2>/dev/null || true
-ln -s "$INSTALL_DIR/jetbrains-toolbox" "$SYMLINK_DIR/jetbrains-toolbox"
-
-if [ -z "$CI" ]; then
-	echo -e "\e[94mRunning for the first time to set-up...\e[39m"
-	( "$INSTALL_DIR/jetbrains-toolbox" & )
-	echo -e "\n\e[32mDone! JetBrains Toolbox should now be running, in your application list, and you can run it in terminal as jetbrains-toolbox (ensure that $SYMLINK_DIR is on your PATH)\e[39m\n"
-else
-	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
-fi
+#mkdir -p "$USER_HOME/.local/share/JetBrains/Toolbox/apps"
+#mkdir -p "$USER_HOME/.local/share/JetBrains/Toolbox/scripts"
+#
+#TMP_DIR="/tmp"
+#INSTALL_DIR="$USER_HOME/.local/share/JetBrains/Toolbox/InstallerBin"
+#SYMLINK_DIR="$USER_HOME/.local/bin"
+#
+#echo -e "\e[94mFetching the URL of the latest version...\e[39m"
+#ARCHIVE_URL=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release' | grep -Po '"linux":.*?[^\\]",' | awk -F ':' '{print $3,":"$4}'| sed 's/[", ]//g')
+#ARCHIVE_FILENAME=$(basename "$ARCHIVE_URL")
+#
+#echo -e "\e[94mDownloading $ARCHIVE_FILENAME...\e[39m"
+#rm "$TMP_DIR/$ARCHIVE_FILENAME" 2>/dev/null || true
+#wget -q --show-progress -cO "$TMP_DIR/$ARCHIVE_FILENAME" "$ARCHIVE_URL"
+#
+#echo -e "\e[94mExtracting to $INSTALL_DIR...\e[39m"
+#mkdir -p "$INSTALL_DIR"
+#rm "$INSTALL_DIR/jetbrains-toolbox" 2>/dev/null || true
+#tar -xzf "$TMP_DIR/$ARCHIVE_FILENAME" -C "$INSTALL_DIR" --strip-components=1
+#rm "$TMP_DIR/$ARCHIVE_FILENAME"
+#chmod +x "$INSTALL_DIR/jetbrains-toolbox"
+#
+#echo -e "\e[94mSymlinking to $SYMLINK_DIR/jetbrains-toolbox...\e[39m"
+#mkdir -p "$SYMLINK_DIR"
+#rm "$SYMLINK_DIR/jetbrains-toolbox" 2>/dev/null || true
+#ln -s "$INSTALL_DIR/jetbrains-toolbox" "$SYMLINK_DIR/jetbrains-toolbox"
+#
+#if [ -z "$CI" ]; then
+#	echo -e "\e[94mRunning for the first time to set-up...\e[39m"
+#	( "$INSTALL_DIR/jetbrains-toolbox" & )
+#	echo -e "\n\e[32mDone! JetBrains Toolbox should now be running, in your application list, and you can run it in terminal as jetbrains-toolbox (ensure that $SYMLINK_DIR is on your PATH)\e[39m\n"
+#else
+#	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
+#fi
 
 
 # USER_HOME="/home/david"
@@ -643,7 +652,7 @@ chgrp david -R "$USER_HOME/.local/share/JetBrains"
 chgrp david -R "$USER_HOME/.local/share/kmonad"
 
 # Now run the thing
-"$INSTALL_DIR/jetbrains-toolbox"
+#"$INSTALL_DIR/jetbrains-toolbox"
 
 echo "### Adding $USER_HOME/.local/bin to PATH ###" ######################################################################
 echo -e "\nexport PATH=\"$USER_HOME/.local/bin:$PATH\"" >> "$USER_HOME/.bashrc"
@@ -666,7 +675,7 @@ unzip /tmp/cinnamon-spices-applets.zip -d /tmp
 mkdir -p "$USER_HOME/.config/cinnamon/spices/directory-menu@torchipeppo"
 
 # Copy extracted applet to /home/user/.local/share/cinnamon/extensions/
-mv -r -f /tmp/cinnamon-spices-applets-master/directory-menu@torchipeppo/files/directory-menu@torchipeppo "$USER_HOME/.local/share/cinnamon/applets/directory-menu@torchipeppo"
+# mv -r -f /tmp/cinnamon-spices-applets-master/directory-menu@torchipeppo/files/directory-menu@torchipeppo #"$USER_HOME/.local/share/cinnamon/applets/directory-menu@torchipeppo"
  
 # Cleanup
 rm /tmp/cinnamon-spices-applets.zip
@@ -788,15 +797,14 @@ EOF
 
 echo "### Finished installing/configuring everything! Launching a few things ###"  ###########################################################################
 
-copyq
+copyq &
 
-flameshot
+flameshot &
 
 # Now that we're done, show the QR to log in to tailscale
 
-tailscale login --advertise-exit-node --qr # --hostname=OVERRIDE-HOSTNAME-HERE
+#tailscale login --advertise-exit-node --qr # --hostname=OVERRIDE-HOSTNAME-HERE
 
-tailscale up --advertise-exit-node -ssh # --hostname=OVERRIDE-HOSTNAME-HERE
-
+#tailscale up --advertise-exit-node -ssh # --hostname=OVERRIDE-HOSTNAME-HERE
 
 
