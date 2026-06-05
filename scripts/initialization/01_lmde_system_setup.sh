@@ -643,12 +643,12 @@ fi
 # USER_HOME="/home/david"
 chown david "$USER_HOME/.local/share"
 chown david -R "$USER_HOME/.local/share/beeper"
-chown david -R "$USER_HOME/.local/share/JetBrains"
+#chown david -R "$USER_HOME/.local/share/JetBrains"
 chown david -R "$USER_HOME/.local/share/kmonad"
 
 chgrp david "$USER_HOME/.local/share"
 chgrp david -R "$USER_HOME/.local/share/beeper"
-chgrp david -R "$USER_HOME/.local/share/JetBrains"
+#chgrp david -R "$USER_HOME/.local/share/JetBrains"
 chgrp david -R "$USER_HOME/.local/share/kmonad"
 
 # Now run the thing
