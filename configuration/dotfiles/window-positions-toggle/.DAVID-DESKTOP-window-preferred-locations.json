@@ -66,7 +66,7 @@
     "ClassPattern": "obsidian.obsidian",
     "PreferredPositions": [
       {
-        "Left": 3332,
+        "Left": 3265,
         "Top": 0,
         "Width": 1590,
         "Height": 1040
@@ -88,7 +88,7 @@
     "ClassPattern": "seafile-applet.Seafile Client",
     "PreferredPositions": [
       {
-        "Left": 3000,
+        "Left": 2930,
         "Top": 0,
         "Width": 338,
         "Height": 1045
@@ -134,7 +134,7 @@
         "Height": 502
       }   
     ]
-  },     
+  },
   {
     "ClassPattern": "github desktop.GitHub Desktop",
     "PreferredPositions": [
@@ -145,7 +145,29 @@
         "Height": 678
       }
     ]
-  },  
+  },
+  {
+    "ClassPattern": "virt-manager.Virt-manager",
+    "PreferredPositions": [
+      {
+          "Left": 13,
+          "Top": 2618,
+          "Width": 540,
+          "Height": 662
+      }
+    ]
+  },
+  {
+    "ClassPattern": "org.remmina.Remmina.org.remmina.Remmina",
+    "PreferredPositions": [
+      {
+        "Left": 4015,
+        "Top": 1264,
+        "Width": 3675,
+        "Height": 1976
+      }
+    ]
+  },
   {
     "ClassPattern": "gnome-terminal-server.Gnome-terminal",
     "PreferredPositions": [
@@ -163,4 +185,5 @@
       }
     ]
   }
+
 ]
