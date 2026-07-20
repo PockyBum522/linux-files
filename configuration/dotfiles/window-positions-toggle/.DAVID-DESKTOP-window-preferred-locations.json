@@ -66,7 +66,7 @@
     "ClassPattern": "obsidian.obsidian",
     "PreferredPositions": [
       {
-        "Left": 3265,
+        "Left": 3342,
         "Top": 0,
         "Width": 1590,
         "Height": 1040
@@ -88,7 +88,7 @@
     "ClassPattern": "seafile-applet.Seafile Client",
     "PreferredPositions": [
       {
-        "Left": 2930,
+        "Left": 3002,
         "Top": 0,
         "Width": 338,
         "Height": 1045
