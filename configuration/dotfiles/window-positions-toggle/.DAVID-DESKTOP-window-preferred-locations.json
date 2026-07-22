@@ -150,10 +150,10 @@
     "ClassPattern": "virt-manager.Virt-manager",
     "PreferredPositions": [
       {
-          "Left": 13,
-          "Top": 2618,
+          "Left": 740,
+          "Top": 2506,
           "Width": 540,
-          "Height": 662
+          "Height": 676
       }
     ]
   },
