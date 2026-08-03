@@ -63,7 +63,7 @@
     ]
   },
   {
-    "ClassPattern": "obsidian.obsidian",
+    "ClassPattern": "md.obsidian.md.Obsidian",
     "PreferredPositions": [
       {
         "Left": 3342,
@@ -165,6 +165,17 @@
         "Top": 1264,
         "Width": 3675,
         "Height": 1976
+      }
+    ]
+  },
+  {
+    "ClassPattern": "kate.kate",
+    "PreferredPositions": [
+      {
+        "Left": 2569,
+        "Top": 2570,
+        "Width": 1281,
+        "Height": 670
       }
     ]
   },
