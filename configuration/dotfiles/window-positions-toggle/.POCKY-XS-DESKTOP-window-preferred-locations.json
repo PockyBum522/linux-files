@@ -1,26 +1,51 @@
 [
  {
+    "ClassPattern": "Navigator.firefox",
+    "ExtraLeftOffset": 10,
+    "ExtraTopOffset": 40,
+    "PreferredPositions": [
+        {
+	        "Left": 3840,
+	        "Top": 72,
+	        "Width": 1919,
+	        "Height": 2088
+        }
+    ]
+  },   
+  {
     "ClassPattern": "beeper.Beeper",
     "ExtraLeftOffset": 10,
     "ExtraTopOffset": 40,
     "PreferredPositions": [
-      {
-        "Left": 200,
-        "Top": 200,
-        "Width": 920,
-        "Height": 938
-      }
+        {
+	        "Left": 2334,
+	        "Top": 1222,
+	        "Width": 1516,
+	        "Height": 938
+        }
+
     ]
   },  
   {
     "ClassPattern": "xed.Xed",
     "PreferredPositions": [
-      {
-        "Left": 280,
-        "Top": 294,
-        "Width": 980,
-        "Height": 978
-      }
+        {
+	        "Left": 2334,
+	        "Top": 1222,
+	        "Width": 1516,
+	        "Height": 938
+        }
+    ]
+  },  
+  {
+    "ClassPattern": "seafile-applet.Seafile Client",
+    "PreferredPositions": [
+        {
+	        "Left": 0,
+	        "Top": 594,
+	        "Width": 322,
+	        "Height": 1106
+        }
     ]
   }
 ]
