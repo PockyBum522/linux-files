@@ -1,0 +1,26 @@
+[
+ {
+    "ClassPattern": "beeper.Beeper",
+    "ExtraLeftOffset": 10,
+    "ExtraTopOffset": 40,
+    "PreferredPositions": [
+      {
+        "Left": 200,
+        "Top": 200,
+        "Width": 920,
+        "Height": 938
+      }
+    ]
+  },  
+  {
+    "ClassPattern": "xed.Xed",
+    "PreferredPositions": [
+      {
+        "Left": 280,
+        "Top": 294,
+        "Width": 980,
+        "Height": 978
+      }
+    ]
+  }
+]
