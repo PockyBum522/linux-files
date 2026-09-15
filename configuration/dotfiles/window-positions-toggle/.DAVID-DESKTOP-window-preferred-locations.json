@@ -63,13 +63,13 @@
     ]
   },
   {
-    "ClassPattern": "md.obsidian.md.Obsidian",
+    "ClassPattern": "md.obsidian.obsidian.md.obsidian.Obsidian",
     "PreferredPositions": [
       {
-        "Left": 3342,
-        "Top": 0,
-        "Width": 1590,
-        "Height": 1040
+        "Left": 3330,
+        "Top": -8,
+        "Width": 1618,
+        "Height": 1080
       }
     ]
   },
@@ -180,16 +180,10 @@
     ]
   },
   {
-    "ClassPattern": "gnome-terminal-server.Gnome-terminal",
+    "ClassPattern": "org.gnome.Terminal.Gnome-terminal",
     "PreferredPositions": [
       {
         "Left": 2560,
-        "Top": 2494,
-        "Width": 1280,
-        "Height": 678
-      },
-      {
-        "Left": 1280,
         "Top": 2494,
         "Width": 1280,
         "Height": 678
