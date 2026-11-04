@@ -1,7 +1,5 @@
 #! /bin/bash
 
-# TODO: https://github.com/AdnanHodzic/displaylink-debian
-
 # TODO: Assign hotkey of printscreen to shutter -s (Will need printsc unassigned from take a screenshot action)
 
 # TODO: Integrate running right click nemo icons script as user
@@ -10,15 +8,11 @@
 
 # TODO: See if there's anything better for my needs than flameshot
 
-# TODO: Fix spotify install
-
 # TODO: Fix jetbrains install
 
 # TODO: Fix remmina install
 
 # TODO: Fix barrier to deskflow
-
-# TODO: Figure out how to auto-install directory menu applet on taskbar
 
 # TODO: Need to give /tmp/ permissions in flatseal for remmina for opening files by CLI to work
 
@@ -221,6 +215,7 @@ apt install -y unzip
 apt install -y pipx
 apt install -y pcscd                 # For yubikey and smart cards
 apt install -y wxpython-tools
+apt install -y virt-manager
 
 
 echo "### Setting up keyboard shortcuts ###" ##############################################################################
@@ -363,6 +358,7 @@ flatpak install -y com.yubico.yubioath
 flatpak install -y com.bitwarden.desktop
 flatpak install -y com.discordapp.Discord
 flatpak install -y md.obsidian.Obsidian
+flatpak install -y org.kde.kwrite
 
 # Note that you need to give /tmp/ permissions in flatseal for remmina for opening files by CLI to work
 #flatpak install -y com.remmina.Remmina
